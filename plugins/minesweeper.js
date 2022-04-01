@@ -26,7 +26,7 @@ return mines[m.chat] = { "map": map, "current": empty }
 case "open" :
 if (game == false) return m.reply("tidak ada sesi permainan")
 const g = global.mines[m.chat]
-if (!oX || !oY) return m.reply("masukkan parameter yang benar.. contoh: " + this.needPrefix + "minesweeper open 2 5")
+if (!oX || !oY) return m.reply("masukkan parameter yang benar.. contoh: /minesweeper open 2 5")
 if(F){
                 if(F === 'f' && g.current[oY - 1][oX - 1] === 'e'){
                     g.current[oY - 1][oX - 1] = 'f';
