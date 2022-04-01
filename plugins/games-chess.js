@@ -176,7 +176,7 @@ var chess = require("../lib/chess")
                         default:
                             return m.reply(`Invalid Usage Format. Use *#chess* for more info`)
                                                                                                                                                                                  return m.reply(`Invalid Usage Format. Use *#chess* for more info`)
-                              }                                                                                                                                                   break
+                                                                                                                                                                            break
             }
 }
 
