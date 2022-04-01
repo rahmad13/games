@@ -2,7 +2,7 @@ import minesweeper from '../lib/mwgrip.js'
 
 let handler = async (m, { conn, command, args }) => {
 global.mines = {}
-game = false
+var game = false
         const orgs = args[0]
 	const oX = args[1]
 	const oY = args[2]
