@@ -21,7 +21,7 @@ if (game) return m.reply("sudah ada sesi permainan")
 var map = minesweeper.generate(x, y, bomb)
 var empty = await minesweeper.generate_empty(x, y)
 m.reply(minesweeper.generate_string(empty))
-game += true
+game = true
 return mines[m.chat] = { "map": map, "current": empty }
 case "open" :
 if (game == false) return m.reply("tidak ada sesi permainan")
