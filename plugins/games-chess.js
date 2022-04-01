@@ -185,4 +185,3 @@ handler.tags = ['games']
 handler.command = /^(chess|ch)$/i
 
 export default handler
-***/
