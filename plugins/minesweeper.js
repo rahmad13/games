@@ -47,7 +47,8 @@ if(F){
                 }
               m.reply(await minesweeper.generate_string(g.current))
            }
-        
+        }
+
 handler.help = ['mw', 'minesweeper'].map(v => v + ' <pencarian>')
 handler.tags = ['game']
 handler.command = /^m(inesweeper|w)$/i
