@@ -1,9 +1,9 @@
 import minesweeper from '../lib/mwgrip.js'
 
-
 let handler = async (m, { conn, command, args }) => {
-
-const orgs = args[0]
+global.mines = {}
+game = false
+        const orgs = args[0]
 	const oX = args[1]
 	const oY = args[2]
 	const F = args[3]
@@ -13,7 +13,8 @@ const orgs = args[0]
 	if (!orgs) return m.reply(`*👾 Minesweeper 👾*
 	
 	*▶️ start* - Memulai Permainan
-	*🔓 open* - Untuk Membuka `)
+	*🔓 open* - Untuk Membuka 
+        example: .Minesweeper start`)
 switch (orgs.toLowerCase()) {
 case "start":
 if (game) return m.reply("sudah ada sesi permainan")
@@ -51,7 +52,7 @@ if(F){
 
 handler.help = ['mw', 'minesweeper'].map(v => v + ' <pencarian>')
 handler.tags = ['game']
-handler.command = /^m(inesweeper|w)$/i
+handler.command = /^(minesweeper|mw)$/i
 
 
 export default handler
