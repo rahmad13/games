@@ -50,7 +50,7 @@ if(F){
            }
         }
 
-handler.help = ['mw', 'minesweeper'].map(v => v + ' <pencarian>')
+handler.help = ['mw', 'minesweeper'].map(v => v + ' <select>')
 handler.tags = ['game']
 handler.command = /^(minesweeper|mw)$/i
 
