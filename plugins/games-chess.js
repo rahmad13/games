@@ -13,7 +13,7 @@ import games from new Map()
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 
-var chess = require("../lib/chess")
+        import chess from "../lib/chess"
         var Chess = new chess()
         const { parseBoard } = Chess
         
@@ -30,7 +30,7 @@ var chess = require("../lib/chess")
                    challenges.set(m.chat, undefined)
                    games.set(m.chat, undefined)
                    ongoing.delete(m.chat)
-                 if (!w) return m.reply('Permainan Selesai Dengan hasil Seri!')
+                 if (!w) return conn.sendMessage(m.chat, 'Permainan Selesai Dengan hasil Seri!', MessageType.text)
                if (w) 
                return m.reply(`@${w.split('@')[0]} menang! 🎊`)
                 }
@@ -53,10 +53,11 @@ var chess = require("../lib/chess")
                   if ( challenges.get(m.chat)) return m.reply('Sesi Chess kamu Masih Ada')
                   challenges.set(m.chat, { challenger: m.sender, 
                   who})
-                  return m.reply(
+                  return conn.sendMessage(m.chat,
                                 `@${m.sender.split('@')[0]} telah mengajak @${
                                     who.split('@')[0]
-                                } untuk bermain catur. gunakan */chess accept* untuk memulai ajakan`)
+                                } untuk bermain catur. gunakan *${userbot.prefix}chess accept* untuk memulai ajakan`,
+                 MessageType.text, { contextInfo: {mentionedJid: [m.sender,who] }})
                  break
                   case "a":
                     case "accept":
@@ -64,10 +65,10 @@ var chess = require("../lib/chess")
                       if ( challenge.who !== m.sender) return m.reply('Tidak ada seseorang yang mengajakmu bermain catur!')
                        ongoing.add(m.chat)
                       const game = new Games(new EventEmitter(), m.chat)
-                     await m.reply(
+                     await conn.sendMessage(m.chat,
                               `*Game Catur Dimulai!*\n\n⬜ *Putih:* @${challenge.challenger.split('@')[0]}\n⬛ *Hitam:* @${
                                     challenge.who.split('@')[0]
-                    }`)
+                    }`, MessageType.text, { contextInfo: {mentionedJid: [m.sender, challenge.challenger]}})
                     game.start(print, challenge.challenger, challenge.who, async () => {
                         const cig = new CIG()
                         cig.loadArray(parseBoard(game.board.getPieces(game.white, game.black)))
@@ -76,7 +77,7 @@ var chess = require("../lib/chess")
                             try {
                                var buff = await cig
                                     .generateBuffer()
-                            await conn.sendFile(m.chat, buff, "", null, m)
+                            await conn.sendMessage(m.chat, buff, MessageType.image)
                                 sent = true
                             } catch (err) {
                                 m.reply(err)
@@ -144,7 +145,7 @@ var chess = require("../lib/chess")
                                         let sent = false
                                         if (!sent) {
                                             try {
-                                                await cig.generateBuffer().then(async (data) => await conn.sendFile(m.chat, data, null, null, m))
+                                                await cig.generateBuffer().then(async (data) => await conn.sendMessage(m.chat, data, MessageType.image))
                                                 sent = true
                                             } catch (err) {
                                                 m.reply(err)
@@ -163,7 +164,10 @@ var chess = require("../lib/chess")
                                 : `You Rejected @${ch.challenger.split('@')[0]}'s Challenge`,
                         )
                         break
-                      
+                      case "tutorial":
+                      const alok = fs.readFileSync("./Lib/tutor.jpg")
+                      return conn.sendFile(m.chat, alok, null, `cara jalan contoh:\n ${userbot.prefix}chess move a2 a3\n\nUntuk jalan Silang ${userbot.prefix}chess move a2 b3 `, m)
+                      break
                         case 'ff':
                             const ga = challenges.get(m.chat)
                             if (!ga) return m.reply('Tidak ada Sesi Game')
@@ -176,7 +180,7 @@ var chess = require("../lib/chess")
                         default:
                             return m.reply(`Invalid Usage Format. Use *#chess* for more info`)
                                                                                                                                                                                  return m.reply(`Invalid Usage Format. Use *#chess* for more info`)
-                                                                                                                                                                            break
+                                                                                                                                                                                 break
             }
 }
 
