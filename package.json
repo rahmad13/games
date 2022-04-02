@@ -1,7 +1,7 @@
 {
-    "name": "games-wabot",
-    "version": "0.9.86",
-    "description": "Customizable WhatsApp Bot",
+    "name": "RkgkNet Bot",
+    "version": "1.0.01",
+    "description": "Beta WhatsApp Bot",
     "main": "index.js",
     "type": "module",
     "directories": {
