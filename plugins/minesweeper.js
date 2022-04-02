@@ -23,9 +23,10 @@ var empty = await minesweeper.generate_empty(x, y)
 m.reply(minesweeper.generate_string(empty))
 game = true
 return global.mines[m.chat] = { "map": map, "current": empty }
-case "open" : {
+case "open" :
 if (game) return m.reply("tidak ada sesi permainan")
 const g = global.mines[m.chat]
+return global.mines[m.chat] = { "map": map, "current": empty }
 if (!oY || !oX) return m.reply("masukkan parameter yang benar.. contoh: /minesweeper open 2 5")
 if(F){
                 if(F === 'f' && g.current[oY - 1][oX - 1] === 'e'){
@@ -49,7 +50,6 @@ if(F){
               m.reply(await minesweeper.generate_string(g.current))
            }
         }
-}
 
 handler.help = ['mw', 'minesweeper'].map(v => v + ' <select>')
 handler.tags = ['game']
