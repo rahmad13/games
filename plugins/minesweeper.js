@@ -26,14 +26,14 @@ return global.mines[m.chat] = { "map": map, "current": empty }
 case "open" :
 if (game) return m.reply("tidak ada sesi permainan")
 const g = global.mines[m.chat]
-if (!oX || !oY) return m.reply("masukkan parameter yang benar.. contoh: /minesweeper open 2 5")
+if (!oY || !oX) return m.reply("masukkan parameter yang benar.. contoh: /minesweeper open 2 5")
 if(F){
                 if(F === 'f' && g.current[oY - 1][oX - 1] === 'e'){
                     g.current[oY - 1][oX - 1] = 'f';
                 }
             } 
       else {
-                g.current[oY - 1][oX - 1] = g.map[oY - 1][oX - 1];
+                g.current[oY - 1][oX - 1] = g.map[oX - 1][oY - 1];
                     if(g.map[oY - 1][oX - 1] === 0){
                         let zero = minesweeper.detect_zero(g.map, oX, oY);
                         for(var i = 0; i < zero.length; i++){
