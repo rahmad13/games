@@ -667,7 +667,7 @@ export async function participantsUpdate({ id, participants, action }) {
   .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
   .toAttachment();
   buffa = await wel.toBuffer()
-                        this.sendFile(id, action === 'add' ? wel.toBuffer() : lea.toBuffer(), pp, 'pp.jpg', text, null, false, { mentions: [user] })
+                        this.sendFile(id, action === 'add' ? wel.toBuffer() : lea.toBuffer(), 'pp.jpg', text, null, false, { mentions: [user] })
                     }
                 }
             }
