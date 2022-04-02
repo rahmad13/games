@@ -264,6 +264,8 @@ export async function handler(chatUpdate) {
                     chat.sDemote = ''
                 if (!('delete' in chat))
                     chat.delete = true
+                if (!('mines' in chat))
+                    chat.mines = ''
                 if (!('antiLink' in chat))
                     chat.antiLink = false
                 if (!('viewonce' in chat))
@@ -281,6 +283,7 @@ export async function handler(chatUpdate) {
                     sBye: '',
                     sPromote: '',
                     sDemote: '',
+                    mines: '',
                     delete: true,
                     antiLink: false,
                     viewonce: false,
