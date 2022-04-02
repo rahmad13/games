@@ -22,7 +22,7 @@ var map = minesweeper.generate(x, y, bomb)
 var empty = await minesweeper.generate_empty(x, y)
 m.reply(minesweeper.generate_string(empty))
 game = true
-return mines[m.chat] = { "map": map, "current": empty }
+return global.mines[m.chat] = { "map": map, "current": empty }
 case "open" :
 if (game) return m.reply("tidak ada sesi permainan")
 const g = global.mines[m.chat]
