@@ -19,13 +19,14 @@ if (!args[1]) return m.reply('detik?')
             })
         } else m.reply(`Balas vn/audio yang ingin diubah dengan caption *${usedPrefix}cut*`)
     } catch (e) {
-        throw e
+        console.log("Eror")
     }
 }
 handler.help = ['cut (reply)']
 handler.tags = ['audio']
-
 handler.command = /^cut(potong|ct)$/i
+
+export default handler
 
 const getRandom = (ext) => {
     return `${Math.floor(Math.random() * 10000)}${ext}`
