@@ -5,7 +5,7 @@ import path, { join } from 'path'
 import { unwatchFile, watchFile } from 'fs'
 import chalk from 'chalk'
 import Canvas from "discord-canvas"
-import uploadImage from'../lib/uploadImage'
+import uploadImage from'./lib/uploadImage'
 import fetch from 'fetch'
 /**
  * @type {import('@adiwajshing/baileys')}
