@@ -54,6 +54,7 @@
         "chess-image-generator-ts": "^1.0.0",
         "chess-node": "^1.1.0",
         "colors": "1.4.0",
+        "discord-canvas": "^1.4.1",
         "express": "^4.17.3",
         "file-type": "^17.1.1",
         "fluent-ffmpeg": "^2.1.2",
