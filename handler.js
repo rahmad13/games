@@ -650,7 +650,7 @@ export async function participantsUpdate({ id, participants, action }) {
   .setColor("avatar", "#000000")
   .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaBCkFVUY0nJxj1DPqtvAwrf7qfvj6e-Rv-A&usqp=CAU")
   .toAttachment();
-  buffo = await lea.toBuffer()
+  var buffo = await lea.toBuffer()
 
  let wel = await new Canvas.Welcome()
   .setUsername(`${await conn.getName(user)}`)
@@ -666,7 +666,7 @@ export async function participantsUpdate({ id, participants, action }) {
   .setColor("avatar", "#000000")
   .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
   .toAttachment();
-  buffa = await wel.toBuffer()
+  var buffa = await wel.toBuffer()
                         this.sendFile(id, action === 'add' ? wel.toBuffer() : lea.toBuffer(), 'pp.jpg', text, null, false, { mentions: [user] })
                     }
                 }
