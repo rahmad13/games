@@ -4,7 +4,9 @@ import { fileURLToPath } from 'url'
 import path, { join } from 'path'
 import { unwatchFile, watchFile } from 'fs'
 import chalk from 'chalk'
-
+import Canvas from "discord-canvas"
+import uploadImage from'../../Lib/uploadImage'
+import fetch from 'fetch'
 /**
  * @type {import('@adiwajshing/baileys')}
  */
@@ -627,11 +629,45 @@ export async function participantsUpdate({ id, participants, action }) {
                     let pp = './src/avatar_contact.png'
                     try {
                         pp = await this.profilePictureUrl(user, 'image')
+                       pp2 = await this.profilePictureUrl(m.chat, 'image').catch(_ => null) || './src/avatar_contact.png'
+
                     } catch (e) {
                     } finally {
                         text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'unknow') :
                             (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-                        this.sendFile(id, pp, 'pp.jpg', text, null, false, { mentions: [user] })
+                       
+  let lea = await new Canvas.Goodbye()
+  .setUsername(`${await conn.getName(user)}`)
+  .setDiscriminator(`337631`)
+  .setMemberCount(`${groupMetadata.participants.length}`)
+  .setGuildName(`${groupMetadata.subject}`)
+  .setAvatar(`${pp}`)
+  .setColor("border", "#000000")
+  .setColor("username-box", "#000000")
+  .setColor("discriminator-box", "#000000")
+  .setColor("message-box", "#000000")
+  .setColor("title", "#ffffff")
+  .setColor("avatar", "#000000")
+  .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaBCkFVUY0nJxj1DPqtvAwrf7qfvj6e-Rv-A&usqp=CAU")
+  .toAttachment();
+  buffo = await lea.toBuffer()
+
+ let wel = await new Canvas.Welcome()
+  .setUsername(`${await conn.getName(user)}`)
+  .setDiscriminator(`445577`)
+  .setMemberCount(`${groupMetadata.participants.length}`)
+  .setGuildName(`${groupMetadata.subject}`)
+  .setAvatar(`${pp}`)
+  .setColor("border", "#000000")
+  .setColor("username-box", "#000000")
+  .setColor("discriminator-box", "#000000")
+  .setColor("message-box", "#000000")
+  .setColor("title", "#ffffff")
+  .setColor("avatar", "#000000")
+  .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
+  .toAttachment();
+  buffa = await wel.toBuffer()
+                        this.sendFile(id, action === 'add' ? wel.toBuffer() : lea.toBuffer(), pp, 'pp.jpg', text, null, false, { mentions: [user] })
                     }
                 }
             }
