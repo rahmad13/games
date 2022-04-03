@@ -1,9 +1,10 @@
 import minesweeper from '../lib/mwgrip.js'
 import utils from '../lib/utils.js'
 //kelupaan
-let handler = async (m, { conn, command, args }) => {
 global.mines = {}
 var game = false
+//Taruh sini lah
+let handler = async (m, { conn, command, args }) => {
         const orgs = args[0]
 	const oX = args[1]
 	const oY = args[2]
@@ -24,12 +25,12 @@ var map = minesweeper.generate(x, y, bomb)
 var empty = await minesweeper.generate_empty(x, y)
 m.reply(minesweeper.generate_string(empty))
 game = true
-return global.mines[m.chat] = { "map": map, "current": empty }
+return mines[m.chat] = { "map": map, "current": empty }
 
 case "open" : 
 if (game) return m.reply("tidak ada sesi permainan")
 const g = global.mines[m.chat]
-return global.mines[m.chat] = { "map": map, "current": empty }
+return mines[m.chat] = { "map": map, "current": empty }
 if (!oY || !oX) return m.reply("masukkan parameter yang benar.. contoh: /minesweeper open 2 5")
 if(F){
                 if(F === 'f' && g.current[oY - 1][oX - 1] === 'e'){
