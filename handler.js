@@ -633,12 +633,9 @@ export async function participantsUpdate({ id, participants, action }) {
             if (chat.welcome) {
                 let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                 for (let user of participants) {
-                    let pp = './src/avatar_contact.png'
+                    let pp = await this.profilePictureUrl(user).catch(_ => './src/avatar_contact.png')
+                  //How fo fix
                     try {
-                        //pp = await this.profilePictureUrl(user, 'image')
-                       pp2 = await this.profilePictureUrl(m.chat, 'image').catch(_ => null) || './src/avatar_contact.png'
-                        pp = await uploadImage(await (await fetch(await this.profilePictureUrl(user, 'image'))).buffer())
-            
                     } catch (e) {
                     } finally {
                         text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'unknow') :
