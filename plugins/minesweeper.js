@@ -5,8 +5,7 @@ global.mines = {}
 
 //Taruh sini lah
 let handler = async (m, { conn, command, args, usedPrefix }) => {
-var user = global.db.data.users[m.sender]
-var player = user[m.sender].gamemines
+var user = global.db.data.users[m.sender].gamemines
         const orgs = args[0]
 	const oX = args[1]
 	const oY = args[2]
@@ -24,21 +23,22 @@ Jika menang Anda dapat *9000 exp🧬* / if you win you get *9000 exp🧬*`)
     switch (orgs.toLowerCase()) {
 
 case "start": 
-if (player) return m.reply("sudah ada sesi permainan")
+if (user) return m.reply("sudah ada sesi permainan")
 var map = minesweeper.generate(x, y, bomb)
 var empty = await minesweeper.generate_empty(x, y)
 m.reply(minesweeper.generate_string(empty))
-player = true
+user = true
 return mines[m.chat] = { 'map': map, 'current': empty }
 
 case "nyerah": case "surrend":
-player = false
+if (user == false) return m.reply("tidak ada sesi permainan")
+user = false
 mines[m.chat] = {}
 global.db.data.users[m.sender].exp -= 10
 conn.sendButton(m.chat, `You GiveUp❕\nAnda menyerah❕\n\nExp Anda dikurangi *10 exp🧬* / your exp minus *10 exp🧬*`, author, null, [['Ok', 'ok'], ['Play Again', usedPrefix + 'mw start']], m)
 
 case "open" : 
-if (player == false) return m.reply("tidak ada sesi permainan")
+if (user == false) return m.reply("tidak ada sesi permainan")
 var g = global.mines[m.chat]
 
 if (!oX || !oY) return m.reply("masukkan parameter yang benar.. contoh: /minesweeper open 2 5")
@@ -58,7 +58,7 @@ if(F){
                        } else if(g.map[oY - 1][oX - 1] === 'x'){
                         conn.sendButton(m.chat, 'GAME OVER🪦\n\n your *exp🧬* has been taken', author, null, [['Play Again', usedPrefix + 'mw start']], m)
                         mines[m.chat] = {}
-                        player = false
+                        user = false
                       return conn.sendButton(m.chat, await minesweeper.generate_string(g.map) + '\n' + 'if you win you can get *exp🧬*', author, null, [['Giveup🖐️', usedPrefix + 'mw nyerah']], m)
                     }
                 }
