@@ -25,12 +25,12 @@ case "start":
 if (game) return m.reply("sedang ada sesi permainan/there is a game session")
 var map = minesweeper.generate(x, y, bomb)
 var empty = await minesweeper.generate_empty(x, y)
-m.reply(minesweeper.generate_string(empty))
+conn.sendButton(m.chat, minesweeper.generate_string(empty)+ '\n' + 'if you win you can get *exp🧬*', author, null, [['Giveup🖐️', usedPrefix + 'mw nyerah']], m)
+                 
 game = true
 return mines[m.chat] = { 'map': map, 'current': empty }
 
 case "nyerah": case "surrend":
-if (game == false) return m.reply("tidak ada sesi permainan/ No session game")
 game = false
 mines[m.chat] = {}
 global.db.data.users[m.sender].exp -= 10
@@ -55,9 +55,11 @@ if(F){
                             g.current[zero[i][0]][zero[i][1]] = g.map[zero[i][0]][zero[i][1]]
                         }                       
                        } else if(g.map[oY - 1][oX - 1] === 'x'){
+                         global.db.data.users[m.sender].exp -= 10
                         conn.sendButton(m.chat, 'GAME OVER🪦\n\n your *exp🧬* has been taken', author, null, [['Play Again', usedPrefix + 'mw start']], m)
                         mines[m.chat] = {}
                         game = false
+                      
                       return conn.sendButton(m.chat, await minesweeper.generate_string(g.map) + '\n' + 'if you win you can get *exp🧬*', author, null, [['Giveup🖐️', usedPrefix + 'mw nyerah']], m)
                     }
                 }
