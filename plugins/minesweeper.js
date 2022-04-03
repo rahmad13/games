@@ -27,10 +27,12 @@ game = true
 return mines[m.chat] = { 'map': map, 'current': empty }
 
 case "open" : 
-if (!game) return m.reply("tidak ada sesi permainan")
-const g = global.mines[m.chat]
+if (game) return m.reply("tidak ada sesi permainan")
+var g = global.mines[m.chat]
+
 return mines[m.chat] = { "map": map, "current": empty }
-if (!oX || !oY) return m.reply("masukkan parameter yang benar.. contoh: /minesweeper open 2 5")
+if (!oY || !oX) return m.reply("masukkan parameter yang benar.. contoh: /minesweeper open 2 5")
+
 if(F){
                 if(F === 'f' && g.current[oY - 1][oX - 1] === 'e'){
                     g.current[oY - 1][oX - 1] = 'f';
@@ -44,7 +46,7 @@ if(F){
                             g.current[zero[i][0]][zero[i][1]] = g.map[zero[i][0]][zero[i][1]];
                         }                       
                        } else if(g.map[oY - 1][oX - 1] === 'x'){
-                        m.reply('GAME OVER');
+                        m.reply('GAME OVER🗿🪦');
                         games = {}
                         game = false
                       return m.reply(await minesweeper.generate_string(g.map))
