@@ -1,5 +1,6 @@
 import minesweeper from '../lib/mwgrip.js'
-
+import utils from '../lib/utils.js'
+//kelupaan
 let handler = async (m, { conn, command, args }) => {
 global.mines = {}
 var game = false
@@ -16,14 +17,16 @@ var game = false
 	*🔓 open* - Untuk Membuka 
         example: .Minesweeper start`)
 switch (orgs.toLowerCase()) {
-case "start":
+
+case "start": 
 if (game) return m.reply("sudah ada sesi permainan")
 var map = minesweeper.generate(x, y, bomb)
 var empty = await minesweeper.generate_empty(x, y)
 m.reply(minesweeper.generate_string(empty))
 game = true
 return global.mines[m.chat] = { "map": map, "current": empty }
-case "open" :
+
+case "open" : 
 if (game) return m.reply("tidak ada sesi permainan")
 const g = global.mines[m.chat]
 return global.mines[m.chat] = { "map": map, "current": empty }
