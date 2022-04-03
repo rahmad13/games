@@ -31,7 +31,6 @@ case "open" :
 //if (!game == false) return m.reply("tidak ada sesi permainan")
 var g = global.mines[m.chat]
 
-return mines[m.chat] = { "map": map, "current": empty }
 if (!oX || !oY) return m.reply("masukkan parameter yang benar.. contoh: /minesweeper open 2 5")
 //Eror keknya 
 if(F){
