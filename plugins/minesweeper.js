@@ -28,7 +28,7 @@ game = true
 return mines[m.chat] = { 'map': map, 'current': empty }
 
 case "open" : 
-if (game) return m.reply("tidak ada sesi permainan")
+if (game == false) return m.reply("tidak ada sesi permainan")
 var g = global.mines[m.chat]
 
 if (!oX || !oY) return m.reply("masukkan parameter yang benar.. contoh: /minesweeper open 2 5")
@@ -56,7 +56,7 @@ if(F){
            }
         }
 
-handler.help = ['mw', 'minesweeper'].map(v => v + ' <select>')
+handler.help = ['mw', 'minesweeper'].map(v => v + ' <select>' + '<number>'+ '<number>')
 handler.tags = ['game']
 handler.command = /^(minesweeper|mw)$/i
 
