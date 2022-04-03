@@ -2,9 +2,10 @@ import minesweeper from '../lib/mwgrip.js'
 //kelupaan
 global.mines = {}
 
-var game = false
+
 //Taruh sini lah
 let handler = async (m, { conn, command, args, usedPrefix }) => {
+var game = global.db.data.users[m.sender].gamemines
         const orgs = args[0]
 	const oX = args[1]
 	const oY = args[2]
@@ -29,7 +30,7 @@ m.reply(minesweeper.generate_string(empty))
 game = true
 return mines[m.chat] = { 'map': map, 'current': empty }
 
-case "nyerah":
+case "nyerah": case "surrend":
 game = false
 mines[m.chat] = {}
 global.db.data.users[m.sender].exp -= 10
@@ -57,10 +58,10 @@ if(F){
                         conn.sendButton(m.chat, 'GAME OVER🪦\n\n your *exp🧬* has been taken', author, null, [['Play Again', usedPrefix + 'mw start']], m)
                         mines[m.chat] = {}
                         game = false
-                      return m.reply(await minesweeper.generate_string(g.map))
+                      return conn.sendButton(m.chat, await minesweeper.generate_string(g.map) + '\n' + 'if you win you can get *exp🧬*', author, null, [['Giveup🖐️', usedPrefix + 'mw nyerah']], m)
                     }
                 }
-              m.reply(await minesweeper.generate_string(g.current))
+              conn.sendButton(m.chat, await minesweeper.generate_string(g.current) + '\n' + 'if you win you can get *exp🧬*', author, null, [['Giveup🖐️', usedPrefix + 'mw nyerah']], m)
            }
         }
 
