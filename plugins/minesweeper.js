@@ -35,15 +35,15 @@ if (!oX || !oY) return m.reply("masukkan parameter yang benar.. contoh: /mineswe
 //Eror keknya 
 if(F){
                 if(F === 'f' && g.current[oY - 1][oX - 1] === 'e'){
-                    g.current[oY - 1][oX - 1] = 'f';
+                    g.current[oY - 1][oX - 1] = 'f'
                 }
             } 
       else {
-                g.current[oY - 1][oX - 1] = g.map[oX - 1][oY - 1];
+                g.current[oY - 1][oX - 1] = g.map[oX - 1][oY - 1]
                     if(g.map[oY - 1][oX - 1] === 0){
-                        let zero = minesweeper.detect_zero(g.map, oX, oY);
+                        let zero = minesweeper.detect_zero(g.map, oX, oY)
                         for(var i = 0; i < zero.length; i++){
-                            g.current[zero[i][0]][zero[i][1]] = g.map[zero[i][0]][zero[i][1]];
+                            g.current[zero[i][0]][zero[i][1]] = g.map[zero[i][0]][zero[i][1]]
                         }                       
                        } else if(g.map[oY - 1][oX - 1] === 'x'){
                         m.reply('GAME OVER🗿🪦')
@@ -60,5 +60,5 @@ handler.help = ['mw', 'minesweeper'].map(v => v + ' <select>' + '<number>'+ '<nu
 handler.tags = ['game']
 handler.command = /^(minesweeper|mw)$/i
 
-
+// LO TAU GAK UDH CAPEK CAPEK BIKIN MALAH DI COMOT ORANG
 export default handler
