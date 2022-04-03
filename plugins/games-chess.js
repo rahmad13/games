@@ -13,8 +13,8 @@ import games from new Map()
 let handler = async (m, { conn, args, usedPrefix }) => {
 
         import chess  from "../lib/chess.js"
-        var Chess = new chess()
-        const { parseBoard } = Chess
+        import Chess from new chess()
+        import { parseBoard } from Chess
         
         const end = async(winner) => {
             var game = games.get(m.chat)
