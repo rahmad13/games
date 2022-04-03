@@ -1,6 +1,4 @@
 import EventEmitter from "events"
-
-
 import fs from "fs"
 import Game from "chess-node"
 import Games from Game.Game
@@ -81,21 +79,19 @@ let handler = async (m, { conn, args, usedPrefix }) => {
                             }
                         }
                     })
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+
               return games.set(m.chat, game)
               break
               case "move":
                 case "m":
                     const g = games.get(m.chat)
                     if (!g) return m.reply('Tidak ada Sesi Catur!')
-                    if (args.length > 3 || args.length < 2) return m.reply(`The move command must be formatted like:\n${userbot.prefix}#chess move fromTile toTile` )
+                    if (args.length > 3 || args.length < 2) return m.reply(`The move command must be formatted like:\n${usedPrefix}#chess move fromTile toTile` )
                     if (args[1] == 'castle') {
                                         const to = args[2]
                                         if (to.length != 2 || !(typeof to[0] == 'string') || isNaN(parseInt(to[1])))
                                             return m.reply(
-                                                "A move's fromTile and toTile must be of the from 'XZ', where X is a letter A-H, and Z is a number 1-8."
-                                            )
+                                                "A move's fromTile and toTile must be of the from 'XZ', where X is a letter A-H, and Z is a number 1-8.")
                                         const move = {
                                             piece: genRealMove(to)
                                         }
@@ -158,8 +154,7 @@ let handler = async (m, { conn, args, usedPrefix }) => {
                         return m.reply(
                             ch.challenger === m.sender
                                 ? `You rejected your challenge`
-                                : `You Rejected @${ch.challenger.split('@')[0]}'s Challenge`,
-                        )
+                                : `You Rejected @${ch.challenger.split('@')[0]}'s Challenge`)
                         break
                       
                         case 'ff':
