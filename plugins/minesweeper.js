@@ -1,5 +1,5 @@
 import minesweeper from '../lib/mwgrip.js'
-import utils from '../lib/utils.js'
+import utils from 'utils'
 //kelupaan
 global.mines = {}
 var game = false
