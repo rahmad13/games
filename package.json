@@ -1,6 +1,6 @@
 {
     "name": "RkgkNetBot",
-    "version": "1.0.01",
+    "version": "1.0.06",
     "description": "Beta WhatsApp Bot",
     "main": "index.js",
     "type": "module",
@@ -46,7 +46,6 @@
         "cfonts": "^2.10.0",
         "chalk": "^5.0.0",
         "cheerio": "^1.0.0-rc.10",
-        "chess.js": "0.12.1",
         "canvacord": "5.2.3",
         "canvas-to-buffer": "^1.1.1",
         "canvas-constructor": "^5.0.1",
