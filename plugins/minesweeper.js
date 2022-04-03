@@ -46,7 +46,7 @@ if(F){
                             g.current[zero[i][0]][zero[i][1]] = g.map[zero[i][0]][zero[i][1]];
                         }                       
                        } else if(g.map[oY - 1][oX - 1] === 'x'){
-                        m.reply('GAME OVER🗿🪦');
+                        m.reply('GAME OVER🗿🪦')
                         mines[m.chat] = {}
                         game = false
                       return m.reply(await minesweeper.generate_string(g.map))
