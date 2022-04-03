@@ -16,7 +16,8 @@ let handler = async (m, { conn, command, args, usedPrefix }) => {
 *▶️ start* - <Start The Game/Memulai Permainan>
 *🔓 open* - <to open/Untuk Membuka>
 *🔽Surend/Nyerah* - <to give up/menyerah>
-example: .Minesweeper start
+*example:* .Minesweeper start
+
 Jika menang Anda dapat *9000 exp🧬* / if you win you get *9000 exp🧬*`)
    
     switch (orgs.toLowerCase()) {
@@ -34,10 +35,10 @@ case "nyerah": case "surrend":
 game = false
 mines[m.chat] = {}
 global.db.data.users[m.sender].exp -= 10
-conn.sendButton(m.chat, `You GiveUp❕\nAnda menyerah❕\n\nExp Anda dikurangi *10 exp🧬* / your exp minus *10 exp🧬*`, author, null, [['Ok', 'ok'], ['Play Again', usedPrefix + 'mw start']], m)
+return conn.sendButton(m.chat, `You GiveUp❕\nAnda menyerah❕\n\nExp Anda dikurangi *10 exp🧬* / your exp minus *10 exp🧬*`, author, null, [['Ok', 'ok'], ['Play Again', usedPrefix + 'mw start']], m)
 
 case "open" : 
-if (game == false) return m.reply("tidak ada sesi permainan")
+if (game == false) return m.reply("tidak ada sesi permainan/No session Game")
 var g = global.mines[m.chat]
 
 if (!oX || !oY) return m.reply("masukkan parameter yang benar.. contoh: /minesweeper open 2 5")
@@ -60,7 +61,7 @@ if(F){
                         mines[m.chat] = {}
                         game = false
                       
-                      return conn.sendButton(m.chat, await minesweeper.generate_string(g.map) + '\n' + 'if you win you can get *exp🧬*', author, null, [['Giveup🖐️', usedPrefix + 'mw nyerah']], m)
+                      return conn.sendButton(m.chat, await minesweeper.generate_string(g.map) + '\n' + '*You Lose*', author, null, [['Giveup🖐️', usedPrefix + 'mw nyerah']], m)
                     }
                 }
               conn.sendButton(m.chat, await minesweeper.generate_string(g.current) + '\n' + 'if you win you can get *exp🧬*', author, null, [['Giveup🖐️', usedPrefix + 'mw nyerah']], m)
