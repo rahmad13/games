@@ -1,6 +1,6 @@
-import { joox } from "../lib/scrape.js"
 
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
+const { joox } = require("../lib/scrape.js")
 
 if (!args || args[0]) throw 'where url??'
 
