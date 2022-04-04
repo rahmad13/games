@@ -5,8 +5,8 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
 
 if (!args) throw 'where url??'
 
-var res = await scrap.joox(args)
-var json
+var nope = await scrap.joox(args)
+
 /**conn.sendFile(m.chat, nope.hasil.img , null, `
 🏷️Judul: ${nope.hasil.lagu}
 👨‍🎤Penyanyi: ${nope.hasil.penyanyi}
