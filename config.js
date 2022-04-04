@@ -1,7 +1,9 @@
 import { watchFile, unwatchFile } from 'fs'
 import chalk from 'chalk'
 import { fileURLToPath } from 'url'
+import fs from 'fs'
 
+/**Owner number**/
 global.owner = [
   ['6282328303332'],
   ['6288287024581'],
@@ -36,6 +38,11 @@ global.author = 'RkgkNet와'
 
 global.multiplier = 69 // The higher, The harder levelup
 
+// Scrape
+
+global.scrape = fs.readFileSync('./lib/scrape.js')
+
+//Rpg
 global.rpg = {
   emoticon(string) {
     string = string.toLowerCase()
