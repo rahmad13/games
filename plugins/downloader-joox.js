@@ -1,6 +1,7 @@
-import fs from fs
+import fs from ("fs")
+import joox from "../lib/scrape.js"
+
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
-const { joox } = fs.readFileSync("../lib/scrape.js")
 
 if (!args || args[0]) throw 'where url??'
 
