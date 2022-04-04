@@ -3,9 +3,9 @@ import scrap from "../lib/scrape.js"
 
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
 
-if (args) throw 'where url??'
+if (!args[0]) throw 'where url??'
 
-var nope = await scrap.joox(args)
+var nope = await scrap.joox(args[0])
 
 m.reply(nope.hasil)
 
