@@ -7,7 +7,7 @@ import fs from 'fs'
 global.owner = [
   ['6282328303332'],
   ['6288287024581'],
-  ['62895605887712'],
+  ['6283190403329'],
   ['6287724225921', '️김현우', true]
   // [number, dia creator/owner?, dia developer?]
 ] // Put your number here
