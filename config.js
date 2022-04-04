@@ -39,10 +39,6 @@ global.author = 'RkgkNet와'
 
 global.multiplier = 69 // The higher, The harder levelup
 
-// Scrape
-
-global.scrape = fs.readFileSync('./lib/scrape.js')
-
 //Rpg
 global.rpg = {
   emoticon(string) {
