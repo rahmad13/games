@@ -13,7 +13,7 @@ let [atas, bawah] = text.split`|`
     if (!/image\/(jpe?g|png)/g.test(mime)) throw `_*Mime ${mime} tidak didukung!*_`
     let img = await q.download?.()
     let url = await uploadImage(img)
-    meme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas ? atas : '')}/${encodeURIComponent(bawah ? bawah : '')}.png?background=${url}`
+    var meme = `https://api.memegen.link/images/custom/${encodeURIComponent(atas ? atas : '')}/${encodeURIComponent(bawah ? bawah : '')}.png?background=${url}`
     stiker = await sticker(false, meme, global.packname, global.author)
     if (stiker) conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
 }
