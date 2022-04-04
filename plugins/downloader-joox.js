@@ -3,25 +3,16 @@ import scrap from "../lib/scrape.js"
 
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
 
-if (!args) throw 'where url??'
+if (args) throw 'where url??'
 
 var nope = await scrap.joox(args)
 
-/**conn.sendFile(m.chat, nope.hasil.img , null, `
-🏷️Judul: ${nope.hasil.lagu}
-👨‍🎤Penyanyi: ${nope.hasil.penyanyi}
-📢Publish: ${nope.hasil.publish}
-💽Album: ${nope.hasil.album}
+m.reply(nope.hasil)
 
-📎Url mp3: ${nope.hasil.mp3}
-`, m)
-return conn.sendFile(m.chat, nope.hasil.mp3, null, null, m)
-**/
-m.reply(nope)
 }
-handler.help = ['joox <url>', 'jx <url>']
+handler.help = ['joox <url>']
 handler.tags = ['downloader']
-handler.command = /^j(oox|x)$/i
+handler.command = /^joox$/i
 
 handler.exp = 0
 
