@@ -20,7 +20,7 @@ let [atas, bawah] = text.split`|`
 //lo mau apa??
 handler.help = ['smeme (caption|reply media)', 'smm <url>', 'sm(caption|reply media)']
 handler.tags = ['sticker']
-handler.command = /^s(m?m)?(meme)?(m)?$/i
+handler.command = /^(smeme|sm|smm)$/i
 
 export default handler
 
