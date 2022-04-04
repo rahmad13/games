@@ -1,11 +1,11 @@
-import fs from ("fs")
-import joox from "../lib/scrape.js"
+import fs from "fs"
+import scrap from "../lib/scrape.js"
 
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
 
 if (!args || args[0]) throw 'where url??'
 
-var nope = await joox(args[0])
+var nope = await scrap.joox(args[0])
 conn.sendFile(m.chat, nope.hasil.img,null, `
 🏷️Judul: ${nope.hasil.lagu}
 👨‍🎤Penyanyi: ${nope.hasil.penyanyi}
