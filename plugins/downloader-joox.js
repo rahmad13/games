@@ -6,8 +6,9 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
 if (!args[0]) throw 'where url??'
 
 var nope = await scrap.joox(args[0])
+var json = await nope.json()
 
-m.reply(nope.hasil)
+m.reply(json.hasil.penyanyi)
 
 }
 handler.help = ['joox <url>']
