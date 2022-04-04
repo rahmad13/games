@@ -8,6 +8,7 @@ global.owner = [
   ['6282328303332'],
   ['6288287024581'],
   ['6283190403329'],
+  ['6285895171063'],
   ['6287724225921', '️김현우', true]
   // [number, dia creator/owner?, dia developer?]
 ] // Put your number here
