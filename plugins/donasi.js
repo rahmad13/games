@@ -7,7 +7,10 @@ let handler =  m => m.reply(`
 │ • Ovo [082328303332]
 │ • Paypal []
 │ • Dana [082328303332]
+│ • Saweria []
 ╰────
+
+Seiklasnya aja:>
 `.trim()) // Tambah sendiri kalo mau
 handler.help = ['donasi']
 handler.tags = ['info']
