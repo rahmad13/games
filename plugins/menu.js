@@ -31,24 +31,23 @@ let tags = {
 }
 const defaultMenu = {
   before: `
-╭─「 %me 🤖」
-│ 👋🏻 Hai, %name!
-│
-│ 🧱 Limit : *%limit Limit*
-│ 🦸🏼‍♂️ Role : *%role*
-│ 🔼 Level : *%level (%exp / %maxexp)*
-│ 💫 Total XP : %totalexp ✨
-│ 
-│ 📅 Tanggal: *%week, %date*
-│ 🕰️ Waktu: *%time*
-│
-│ 📈 Uptime: *%uptime (%muptime)*
-│ 📊 Database: %rtotalreg of %totalreg
-╰────
+━━━⊣ %me 🤖」⊢━━
+⊕ 👋🏻 Hai, %name!
+
+⊕ 🧱 Limit : *%limit Limit*
+⊕ 🦸🏼‍♂️ Role : *%role*
+⊕ 🔼 Level : *%level (%exp / %maxexp)*
+⊕ 💫 Total XP : %totalexp ✨
+ 
+⊕ 📅 Tanggal: *%week, %date*
+⊕ 🕰️ Waktu: *%time*
+
+⊕ 📈 Uptime: *%uptime (%muptime)*
+⊕ 📊 Database: %rtotalreg of %totalreg
 %readmore`.trimStart(),
-  header: '╭─「 %category 」',
-  body: '│ • %cmd %islimit %isPremium',
-  footer: '╰────\n',
+  header: '━━⊣ %category ⊢━━',
+  body: ' • %cmd %islimit %isPremium',
+  footer: '⊢━━━━━━━━━━━━━⊣\n',
   after: `
 *%npmname* | %version
 ${'```%npmdesc```'}
