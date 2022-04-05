@@ -5,7 +5,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 if (!m.quoted) throw `balas stiker dengan caption *${usedPrefix + command}*`
 let mime = m.quoted.mimetype || ''
     if (!/webp/g.test(mime)) throw `balas stiker dengan caption *${usedPrefix + command}*`
-    let media = await m.quoted.download?.()
+    let media = await q.download?.()
     let out = Buffer.alloc(0)
     if (/webp/g.test(mime)) {
         out = await webp2mp4(media)
