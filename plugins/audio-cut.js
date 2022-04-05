@@ -6,7 +6,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!args[1]) return m.reply('detik?')
      let q = m.quoted ? m.quoted : m
      let mime = (m.quoted ? m.quoted : m.msg).mimetype || ''
-    if (/audio/.test(mime)) throw 'reply audio'
+    if (!/audio/.test(mime)) throw 'reply audio'
      let media = await q.download?.()
      if (!media) throw 'Can\'t download media'
      let ran = getRandom('.mp3')
