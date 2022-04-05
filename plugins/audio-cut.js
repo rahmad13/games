@@ -5,10 +5,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!args[0]) return m.reply('detik?')
     if (!args[1]) return m.reply('detik?')
 
-try {
      let q = m.quoted ? m.quoted : m
      let mime = (q.msg || q).mimetype || ''
-    if (!/audio/g.test(mime)) {
+    if (!/audio/.test(mime)) throw 'reply audio'
      let media = await q.download?.()
      if (!media) throw 'Can\'t download media'
      let ran = getRandom('.mp3')
@@ -19,10 +18,6 @@ try {
      conn.sendFile(m.chat, buff, ran, null, m, true, { quoted: m, mimetype: 'audio/mp4' })
      fs.unlinkSync(ran)
          })
-      } else m.reply(`Reply Audio!!!`)
-    } catch (e) {
-      m.reply(e)
-         }
        }
 handler.help = ['cut (reply|second|to second)']
 handler.tags = ['audio']
