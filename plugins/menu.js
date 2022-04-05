@@ -45,8 +45,6 @@ const defaultMenu = {
 ⊕ 📈 Uptime: *%uptime (%muptime)*
 ⊕ 📊 Database: %rtotalreg of %totalreg
 
-*Permatotan 100%*
-
 %readmore`.trimStart(),
   header: '━━⊣ %category ⊢━━',
   body: ' • %cmd %islimit %isPremium',
