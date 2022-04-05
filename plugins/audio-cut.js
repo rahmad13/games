@@ -15,6 +15,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
      let buff = fs.readFileSync(ran)
      conn.sendFile(m.chat, buff, ran, null, m, true, { quoted: m, mimetype: 'audio/mp4' })
      fs.unlinkSync(ran)
+         })
        }
 handler.help = ['cut (reply|second|to second)']
 handler.tags = ['audio']
