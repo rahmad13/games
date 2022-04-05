@@ -7,8 +7,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 try {
      let q = m.quoted ? m.quoted : m
-     let mime = (m.quoted ? m.quoted : m.msg).mimetype || ''
-    if (/audio/g.test(mime)) {
+     let mime = (q.msg || q).mimetype || ''
+    if (!/audio/g.test(mime)) {
      let media = await q.download?.()
      if (!media) throw 'Can\'t download media'
      let ran = getRandom('.mp3')
