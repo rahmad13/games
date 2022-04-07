@@ -10,6 +10,7 @@ let handler = async (m, { conn, command, args, usedPrefix }) => {
 	const oY = args[2]
 	const F = args[3]
 	const x = 10
+        //kyk Kordinat
 	const y = 10
 	const bomb = 15
 	if (!orgs) return m.reply(`*👾 Minesweeper Game👾*
@@ -18,7 +19,7 @@ let handler = async (m, { conn, command, args, usedPrefix }) => {
 *🔽Surend/Nyerah* - <to give up/menyerah>
 *example:* .Minesweeper start
 
-Jika menang Anda dapat *9000 exp🧬* / if you win you get *9000 exp🧬*`)
+Jika menang Anda dapat *9000 exp🧬* / if you win you get *9000 exp🧬* \n Follow github:@Rizxyu`)
    
     switch (orgs.toLowerCase()) {
 
@@ -67,7 +68,9 @@ if(F){
               conn.sendButton(m.chat, await minesweeper.generate_string(g.current) + '\n' + 'if you win you can get *exp🧬*', author, null, [['Giveup🖐️', usedPrefix + 'mw nyerah']], m)
            }
         }
-
+     /**
+    MADE BY FAUZAN REKODE OR FIX BY RIZXYU
+    **/
 handler.help = ['mw', 'minesweeper'].map(v => v + ' <select>' + '<number>'+ '<number>')
 handler.tags = ['game']
 handler.command = /^(minesweeper|mw)$/i
