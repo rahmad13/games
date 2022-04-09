@@ -9,6 +9,13 @@ let handler = async (m, { conn, text, isOwner }) => {
     let chats = global.db.data.chats[res]
     if (!chats) chats = global.db.data.chats[res] = {}
     if (expired) chats.expired = +new Date() + expired * 1000 * 60 * 60 * 24
+
+    let caption = `*${conn.getName(conn.user.jid)}* adalah bot whatsapp yang dibangun dengan Nodejs, *${conn.user.name}* diundang oleh @${m.sender.split`@`[0]}
+    
+ketik *${usedPrefix}menu* untuk melihat daftar perintah`
+
+    conn.sendHydrated(res, caption, author, "https://images6.alphacoders.com/106/1061828.png", "https://chat.whatsapp.com/KamZimB6d8R3c2C4PepN6Q", "GC Whatsapp", null, null, [["Menu", `/menu`],
+["Owner", `/owner`]], m, { mentions: conn.parseMention(caption)})
 }
 handler.help = ['join <chat.whatsapp.com>']
 handler.tags = ['premium']
