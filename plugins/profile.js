@@ -1,7 +1,7 @@
 let handler = async (m, { conn, usedPrefix }) => {
-let pp = await conn.profilePictureUrl(user).catch(_ => './src/avatar_contact.png')
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
   try {
+let pp = await conn.profilepictureurl(user).catch(_ => './src/avatar_contact.png')
    } catch (e) {
 } finally {
 if (typeof global.db.data.users[who] == "undefined") {
