@@ -27,7 +27,7 @@ let { name, limit, exp, lastclaim, registered, regTime, age, level, role, banned
     
     let math = max - xp
     let str = `
-🏷️Nama: ${username} ${registered ? '(' + name + ') ' : ''}(@${who.replace(/@.+/, '')})${about != 401 ? '\nInfo: ' + about : ''}
+🏷️Nama: ${username} ${registered ? '(' + name + ') ' : ''}(@${who.replace(/@.+/, '')})
 📎Link: https://wa.me/${who.split`@`[0]}${registered ? '\nUmur: ' + age : ''}
 🎉XP: TOTAL ${exp} (${exp - min} / ${xp}) [${math <= 0 ? `Siap untuk *${usedPrefix}levelup*` : `${math} XP lagi untuk levelup`}]
 🧬Level: ${level}
