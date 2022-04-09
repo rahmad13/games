@@ -40,8 +40,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                             return end(winner)
                         }
                     }
-            if (!args[0]) return m.reply(`♟️ *Chess(catur) Commands* ♟️\n\n🎗️ *${userbot.prefix}chess challenge* - Memulai permainan Dengan mereply Orang yg ingin kamu ajak\n\n🎀 *${userbot.prefix}chess accept* - Menyetujui ajakan seseorang\n\n🔰 *${userbot.prefix}chess reject* - Menolak ajakan challenge\n\n💝 *${userbot.prefix}chess move [fromTile | 'castle'] [toTile]* - untuk menjalankan Pion Catur (refer to the image)\n\n🎋 *${userbot.prefix}chess ff* - until menyerah/meninggalkan match\n\n*💬${userbot.prefix}chess tutorial* - untuk mengetahui Bagaimana cara memainkan catur`
+            if (!args[0]) return m.reply(`♟️ *Chess(catur) Commands* ♟️\n\n🎗️ *${usedPrefix}chess challenge* - Memulai permainan Dengan mereply Orang yg ingin kamu ajak\n\n🎀 *${usedPrefix}chess accept* - Menyetujui ajakan seseorang\n\n🔰 *${usedPrefix}chess reject* - Menolak ajakan challenge\n\n💝 *${usedPrefix}chess move [fromTile | 'castle'] [toTile]* - untuk menjalankan Pion Catur (refer to the image)\n\n🎋 *${usedPrefix}chess ff* - until menyerah/meninggalkan match`
             )
+
             switch (args[0].toLowerCase()) {
               case "c":
                 case "challenge":
