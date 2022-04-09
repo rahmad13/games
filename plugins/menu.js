@@ -42,9 +42,10 @@ const defaultMenu = {
 ⊕ 📅 Tanggal: *%week, %date*
 ⊕ 🕰️ Waktu: *%time*
 
-⊕ 📈 Uptime: *%uptime (%muptime)*
-⊕ 📊 Database: %rtotalreg of %totalreg
+⊕ 📈 Bot Online: *%uptime (%muptime)*
+⊕ 📊 Register: %totalreg
 
+dont spam bot stupid
 %readmore`.trimStart(),
   header: '━━⊣ %category ⊢━━',
   body: ' • %cmd %islimit %isPremium',
