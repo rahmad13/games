@@ -31,7 +31,7 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
 *${isLimit ? 'Pakai ' : ''}Link:* ${link}
 `.trim(), m)
   if (!isLimit) await conn.sendFile(m.chat, source, title+".mp3", '', m, null, {
-    mimetype: ext, asDocument: true
+    asDocument: true
   })
 }
 handler.help = ['mp3', 'a'].map(v => 'yt' + v + ` <url> <without message>`)
