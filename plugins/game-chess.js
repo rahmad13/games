@@ -42,6 +42,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                     }
             if (!args[0]) return m.reply(`♟️ *Chess(catur) Commands* ♟️\n\n🎗️ *${usedPrefix}chess challenge* - Memulai permainan Dengan mereply Orang yg ingin kamu ajak\n\n🎀 *${usedPrefix}chess accept* - Menyetujui ajakan seseorang\n\n🔰 *${usedPrefix}chess reject* - Menolak ajakan challenge\n\n💝 *${usedPrefix}chess move [fromTile | 'castle'] [toTile]* - untuk menjalankan Pion Catur (refer to the image)\n\n🎋 *${usedPrefix}chess ff* - until menyerah/meninggalkan match`)
 
+        try {
             switch (args[0].toLowerCase()) {
               case "c":
                 case "challenge":
@@ -176,7 +177,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                             return m.reply(`Invalid Usage Format. Use *#chess* for more info`)
                                                                                                                                                                                  return m.reply(`Invalid Usage Format. Use *#chess* for more info`)                                                                                                                                                                             break
             }
-               
+               } catch (e) {
+console.log(e)
+     }
 }
 
 handler.help = ['chess'].map(v => v + ' <tag>')
