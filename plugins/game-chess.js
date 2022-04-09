@@ -8,8 +8,8 @@ import games = new Map()
  import challenges from new Map()
  import ongoing from new Set()
         import chess from "../lib/chess"
-        var Chess = new chess()
-        const { parseBoard } = Chess
+        import Chess from new chess()
+        import { parseBoard } from Chess
         
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 
@@ -53,7 +53,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                   return m.reply(
                                 `@${m.sender.split('@')[0]} telah mengajak @${
                                     who.split('@')[0]
-                                } untuk bermain catur. gunakan *${userbot.prefix}chess accept* untuk memulai ajakan`
+                                } untuk bermain catur. gunakan *${usedPrefix}chess accept* untuk memulai ajakan`
                  )
                  break
                   case "a":
@@ -89,7 +89,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                 case "m":
                     const g = games.get(m.chat)
                     if (!g) return m.reply('Tidak ada Sesi Catur!')
-                    if (args.length > 3 || args.length < 2) return m.reply(`The move command must be formatted like:\n${userbot.prefix}#chess move fromTile toTile` )
+                    if (args.length > 3 || args.length < 2) return m.reply(`The move command must be formatted like:\n${usedPrefix}#chess move fromTile toTile` )
                     if (args[1] == 'castle') {
                                         const to = args[2]
                                         if (to.length != 2 || !(typeof to[0] == 'string') || isNaN(parseInt(to[1])))
