@@ -149,7 +149,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                             }
                                         }
                                     })
-                                    
+                                    break
                     case "reject":
                         const ch = challenges.get(m.chat)
                         if ((ch === null || ch === void 0 ? void 0 : ch.who) !== m.sender && (ch === null || ch === void 0 ? void 0 : ch.challenger) !== m.sender)if ((ch === null || ch === void 0 ? void 0 : ch.who) !== m.sender && (ch === null || ch === void 0 ? void 0 : ch.challenger) !== m.sender)
@@ -171,6 +171,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                 return end(players.filter((player) => m.sender !== player)[0])
                             }
                             return m.reply('You are not participating in any games')
+                         break
                         default:
                             return m.reply(`Invalid Usage Format. Use *#chess* for more info`)
                                                                                                                                                                                  return m.reply(`Invalid Usage Format. Use *#chess* for more info`)
