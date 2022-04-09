@@ -5,7 +5,7 @@ let handler = async (m, { conn, text }) => {
   let cc = conn.serializeM(text ? m : m.quoted ? await m.getQuotedObj() : false || m)
   let teks = text ? text : cc.text
   conn.reply(m.chat, `_Mengirim pesan broadcast ke ${chats.length} chat_`, m)
-  for (let id of chats) await conn.sendHydrated(m.chat, "*「"+ author + " All Chat Broadcast 」* \n\n" + text, author, "https://images6.alphacoders.com/106/1061828.png", "https://chat.whatsapp.com/KamZimB6d8R3c2C4PepN6Q", "GC Whatsapp", "https://youtube.com/channel/UC3UAP0ikH_3_ICRP_3Ar-Lw", 'youtube', [["Menu", `/menu`],
+  for (let id of chats) await conn.sendHydrated(id, "*「"+ author + " All Chat Broadcast 」* \n\n" + text, author, "https://images6.alphacoders.com/106/1061828.png", "https://chat.whatsapp.com/KamZimB6d8R3c2C4PepN6Q", "GC Whatsapp", "https://youtube.com/channel/UC3UAP0ikH_3_ICRP_3Ar-Lw", 'youtube', [["Menu", `/menu`],
 ["Owner", `/owner`]], m)
   m.reply('Selesai Broadcast All Chat :)')
 }
