@@ -55,7 +55,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                     who.split('@')[0]
                                 } untuk bermain catur. gunakan *${usedPrefix}chess accept* untuk memulai ajakan`
                  )
-                 break
+                 
                   case "a":
                     case "accept":
                       const challenge = await challenges.get(m.chat)
@@ -149,7 +149,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                                             }
                                         }
                                     })
-                                    break
+                                    
                     case "reject":
                         const ch = challenges.get(m.chat)
                         if ((ch === null || ch === void 0 ? void 0 : ch.who) !== m.sender && (ch === null || ch === void 0 ? void 0 : ch.challenger) !== m.sender)if ((ch === null || ch === void 0 ? void 0 : ch.who) !== m.sender && (ch === null || ch === void 0 ? void 0 : ch.challenger) !== m.sender)
