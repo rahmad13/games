@@ -80,6 +80,7 @@
         "socket.io": "^4.4.1",
         "syntax-error": "^1.4.0",
         "terminal-image": "^2.0.0",
+        "ts-node": "^10.2.1",
         "url-regex-safe": "^3.0.0",
         "yargs": "^17.3.1"
     },
