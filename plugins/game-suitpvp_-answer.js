@@ -21,7 +21,7 @@ handler.before = async function (m) {
 @${room.p2.split`@`[0]}
 
 Silahkan pilih suit di chat masing"
-klik wa.me/${conn.user.jid.split`@`[0]}`, m.chat, {
+klik wa.me/${conn.user.jid.split`@`[0]}`, m.chat, 
          {
           mentions: [room.p, room.p2]
         }
