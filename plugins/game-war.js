@@ -51,7 +51,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
     if (!(m.chat in conn.war)) {
       conn.war2[m.chat] = {"war" : false, "turn" : 0, "time" : 0, "money" : 0}
       conn.war[m.chat] = []
-      xp = global.db.data.users[m.sender].xp
+      xp = global.db.data.users[m.sender].exp
       conn.war[m.chat][0] = {"user": m.sender, "hp": 5000, "lvl": global.db.data.users[m.sender].level, "turn" : false}
       for (i=1;i<10;i++){
         conn.war[m.chat][i] = {"user": "", "hp" : 0, "lvl" : 0, "turn" : false}
@@ -83,7 +83,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
           if (global.db.data.users[m.sender].money < conn.war2[m.chat].money) return m.reply(`*Uang kamu minimal Rp. ${conn.war2[m.chat].money.toLocaleString()} untuk bermain game ini.*`)
           for (i = 1 ; i < 5 ; i++) {
             if (conn.war[m.chat][i].user == ""){
-              xp = global.db.data.users[m.sender].xp
+              xp = global.db.data.users[m.sender].exp
               conn.war[m.chat][i] = {"user" : m.sender, "hp" : 5000, "lvl" : global.db.data.users[m.sender].level, "turn" : false}
               total = 0
               for (i = 0 ; i < 10 ; i++) {
@@ -99,7 +99,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
           if (global.db.data.users[m.sender].money < conn.war2[m.chat].money) return m.reply(`*Uang kamu minimal Rp. ${conn.war2[m.chat].money.toLocaleString()} untuk bermain game ini.*`)
           for (i = 5 ; i < 10 ; i++) {
             if (conn.war[m.chat][i].user == ""){
-              xp = global.db.data.users[m.sender].xp
+              xp = global.db.data.users[m.sender].exp
               conn.war[m.chat][i] = {"user" : m.sender, "hp" : 5000, "lvl" : global.db.data.users[m.sender].level, "turn" : false}
               total = 0
               for (i = 0 ; i < 10 ; i++) {
