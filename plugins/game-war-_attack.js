@@ -1,4 +1,4 @@
-/**
+
 
 let handler = async (m, { conn, usedPrefix, args, command }) => {
   conn.war = conn.war ? conn.war : {}
@@ -18,11 +18,11 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
     // m.reply("Turn : " + turn + "-" + turnNow + "\n\nTime : " + time + "-" + timeNow)
     if (turn == turnNow && time == timeNow){
       conn.war[m.chat][turn].hp -= 2500
-      conn.reply(m.chat,`*@${conn.war[m.chat][turn].user.split('@')[0]} sedang AFK (Denda -2500 HP)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][turn].user]}})
+      conn.reply(m.chat,`*@${conn.war[m.chat][turn].user.split('@')[0]} sedang AFK (Denda -2500 HP)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,null,{ mentions : [conn.war[m.chat][turn].user]})
       await sleep(3000)
       // cek kalau mati
       if (conn.war[m.chat][turn].hp <= 0) {
-        conn.reply(m.chat,`*@${conn.war[m.chat][turn].user.split('@')[0]} sudah mati karena HP (Health Point) habis.*`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][turn].user]}})
+        conn.reply(m.chat,`*@${conn.war[m.chat][turn].user.split('@')[0]} sudah mati karena HP (Health Point) habis.*`,null,{ mentions : [conn.war[m.chat][turn].user]})
         // cek tim nya
         playerTotal = 0
         playerKalah = 0
@@ -122,7 +122,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
         }
       }
       await sleep(3000)
-      conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang (Waktu 90 detik)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,null,{contextInfo : {mentionedJid : [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
+      conn.reply(m.chat,`*Giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang (Waktu 90 detik)*\n\n.war player = statistik pemain\n.attack @tag = serang lawan`,null,{ mentions : [conn.war[m.chat][conn.war2[m.chat].turn].user]})
       cekAFK(conn.war2[m.chat].turn)
     }
   }
@@ -132,7 +132,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
   for (i=0;i<10;i++){
     if (m.sender == conn.war[m.chat][i].user){
       if (i != conn.war2[m.chat].turn) {
-        conn.reply(m.chat,`*Sekarang adalah giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang.*`,m, {contextInfo : { mentionedJid : [conn.war[m.chat][conn.war2[m.chat].turn].user]}})
+        conn.reply(m.chat,`*Sekarang adalah giliran @${conn.war[m.chat][conn.war2[m.chat].turn].user.split('@')[0]} untuk menyerang.*`,m, { mentions : [conn.war[m.chat][conn.war2[m.chat].turn].user]})
         cekAFK(conn.war2[m.chat].turn)
       }
     }
@@ -168,9 +168,9 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
           if (conn.war[m.chat][i].user == target){
             conn.war[m.chat][i].hp -= pointAttacker * 500
             conn.war[m.chat][conn.war2[m.chat].turn].turn = true
-            conn.reply(m.chat,`*@${attacker.split('@')[0]} menyerang @${target.split('@')[0]} sampai nyawanya berkurang ${pointAttacker * 500} (Sisa HP: ${conn.war[m.chat][i].hp})*\n\n*@${attacker.split('@')[0]} [${pointAttacker*10}%] - [${pointTarget*10}%] @${target.split('@')[0]}*\n*Level sangat mempengaruhi keberhasilan.*`,m,{contextInfo : {mentionedJid : [attacker, target]}})
+            conn.reply(m.chat,`*@${attacker.split('@')[0]} menyerang @${target.split('@')[0]} sampai nyawanya berkurang ${pointAttacker * 500} (Sisa HP: ${conn.war[m.chat][i].hp})*\n\n*@${attacker.split('@')[0]} [${pointAttacker*10}%] - [${pointTarget*10}%] @${target.split('@')[0]}*\n*Level sangat mempengaruhi keberhasilan.*`,m,{ mentions : [attacker, target]})
             await sleep(2000)
-            if (conn.war[m.chat][i].hp <= 0) conn.reply(m.chat,`*@${target.split(`@`)[0]} sudah mati dalam pertarungan.*`,m, {contextInfo : {mentionedJid : [target]}})
+            if (conn.war[m.chat][i].hp <= 0) conn.reply(m.chat,`*@${target.split(`@`)[0]} sudah mati dalam pertarungan.*`,m, { mentions : [target]})
             success = true
           }
         }
@@ -212,9 +212,9 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
             conn.reply(m.chat,conn.war[m.chat][conn.war2[m.chat].turn].turn,m)
             conn.war[m.chat][conn.war2[m.chat].turn].turn = true
             conn.reply(m.chat,conn.war[m.chat][conn.war2[m.chat].turn].turn,m)
-            conn.reply(m.chat,`*@${attacker.split('@')[0]} menyerang @${target.split('@')[0]} sampai nyawanya berkurang ${pointAttacker * 500} (Sisa HP: ${conn.war[m.chat][i].hp})*\n\n*@${attacker.split('@')[0]} [${pointAttacker*10}%] - [${pointTarget*10}%] @${target.split('@')[0]}*\n*Level sangat mempengaruhi keberhasilan.*`,m,{contextInfo : {mentionedJid : [attacker, target]}})
+            conn.reply(m.chat,`*@${attacker.split('@')[0]} menyerang @${target.split('@')[0]} sampai nyawanya berkurang ${pointAttacker * 500} (Sisa HP: ${conn.war[m.chat][i].hp})*\n\n*@${attacker.split('@')[0]} [${pointAttacker*10}%] - [${pointTarget*10}%] @${target.split('@')[0]}*\n*Level sangat mempengaruhi keberhasilan.*`,m,{ mentions : [attacker, target]})
             await sleep(2000)
-            if (conn.war[m.chat][i].hp <= 0) conn.reply(m.chat,`*@${target.split(`@`)[0]} sudah mati dalam pertarungan.*`,m, {contextInfo : {mentionedJid : [target]}})
+            if (conn.war[m.chat][i].hp <= 0) conn.reply(m.chat,`*@${target.split(`@`)[0]} sudah mati dalam pertarungan.*`,m, { mentions : [target]})
             success = true
           }
         }
