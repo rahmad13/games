@@ -6,7 +6,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     try {
         let q = m.quoted ? m.quoted : m
         let mime = (m.quoted ? m.quoted : m.msg).mimetype || ''
-        let getRandom = `${Math.floor(Math.random() * 10000)}`
         let set
         if (/bass/.test(command)) set = '-af equalizer=f=94:width_type=o:width=2:g=30'
         if (/blown/.test(command)) set = '-af acrusher=.1:1:64:0:log'
@@ -22,7 +21,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         if (/tupai|squirrel|chipmunk/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
         if (/audio/.test(mime)) {
             let media = await q.download?.()
-            let ran = (getRandom + '.mp3')
+            let ran = getRandom('.mp3')
             exec(`ffmpeg -i ${media} ${set} ${ran}`, (err, stderr, stdout) => {
                 fs.unlinkSync(media)
                 if (err) throw `_*Error!*_`
@@ -40,3 +39,7 @@ handler.tags = ['audio']
 handler.command = /^(bass|blown|deep|earrape|fas?t|nightcore|reverse|robot|slow|smooth|tupai|squirrel|chipmunk)$/i
 
 export default handler
+
+function getRandom (ext) => {
+    return `${Math.floor(Math.random() * 10000)}${ext}`
+}
