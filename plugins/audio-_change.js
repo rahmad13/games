@@ -40,6 +40,6 @@ handler.command = /^(bass|blown|deep|earrape|fas?t|nightcore|reverse|robot|slow|
 
 export default handler
 
-function getRandom (ext) => {
+function getRandom (ext) {
     return `${Math.floor(Math.random() * 10000)}${ext}`
 }
