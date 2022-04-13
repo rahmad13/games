@@ -45,7 +45,7 @@ const defaultMenu = {
 ⊕ 📈 Bot Online: *%uptime (%muptime)*
 ⊕ 📊 Register: %totalreg
 
-dont spam bot stupid
+📌 This bot is still in beta, if you find an error in the command bot, please report the owner. Thank you
 %readmore`.trimStart(),
   header: '━━⊣ %category ⊢━━',
   body: ' • %cmd %islimit %isPremium',
