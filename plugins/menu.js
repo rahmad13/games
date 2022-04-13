@@ -31,23 +31,26 @@ let tags = {
 }
 const defaultMenu = {
   before: `
-━━━⊣ %me 🤖」⊢━━
-⊕ 👋🏻 Hai, %name!
 
+👋🏻 Hai, *%name!* Im *%me*
+
+*YOUR PROFILE*
 ⊕ 🧱 Limit : *%limit Limit*
 ⊕ 🦸🏼‍♂️ Role : *%role*
 ⊕ 🔼 Level : *%level (%exp / %maxexp)*
 ⊕ 💫 Total XP : %totalexp ✨
  
+*TIME & CALENDAR*
 ⊕ 📅 Tanggal: *%week, %date*
 ⊕ 🕰️ Waktu: *%time*
 
+*BOT STATUS*
 ⊕ 📈 Bot Online: *%uptime (%muptime)*
 ⊕ 📊 Register: %totalreg
 
 📌 This bot is still in beta, if you find an error in the command bot, please report the owner. Thank you
 %readmore`.trimStart(),
-  header: '━━⊣ %category ⊢━━',
+  header: '━━⊣ *👾%category* ⊢━━',
   body: ' • %cmd %islimit %isPremium',
   footer: '⊢━━━━━━━━━━━━━⊣\n',
   after: `
