@@ -8,7 +8,7 @@ global.owner = [
   ['6282328303332'],
   ['6288287024581'],
   ['6285895171063'],
-  ['6287724225921', '️김현우', true]
+  ['6287724225921', '️Rizky', true]
   // [number, dia creator/owner?, dia developer?]
 ] // Put your number here
 global.mods = [] // Want some help?
@@ -34,7 +34,7 @@ global.APIKeys = { // APIKey Here
 
 // Sticker WM
 global.packname = 'wa.me/6288287024581'
-global.author = 'RkgkNet와'
+global.author = 'Jinwo'
 
 global.multiplier = 69 // The higher, The harder levelup
 
