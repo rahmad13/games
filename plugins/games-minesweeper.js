@@ -62,7 +62,7 @@ if(F){
                         mines[m.chat] = {}
                         game = false
                       
-                      return conn.sendButton(m.chat, await minesweeper.generate_string(g.map) + '\n' + '*You Lose*', author, null, [['Giveup🖐️', usedPrefix + 'mw nyerah']], m)
+                      return conn.sendButton(m.chat, await minesweeper.generate_string(g.map) + '\n' + '*You Lose*', author, null, [['Again', usedPrefix + 'mw start']], m)
                     }
                 }
               conn.sendButton(m.chat, await minesweeper.generate_string(g.current) + '\n' + 'if you win you can get *exp🧬*', author, null, [['Giveup🖐️', usedPrefix + 'mw nyerah']], m)
