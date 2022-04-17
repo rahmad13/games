@@ -21,7 +21,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         if (/tupai|squirrel|chipmunk/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
         if (/audio/.test(mime)) {
             let media = await q.download?.()
-            let ran = conn.getRandom('.mp3')
+            let ran = getRandom('.mp3')
             exec(`ffmpeg -i ${media} ${set} ${ran}`, (err, stderr, stdout) => {
                 unlinkSync(media)
                 if (err) throw `_*Error!*_`
