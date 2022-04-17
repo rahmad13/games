@@ -57,12 +57,13 @@ if(F){
                             g.current[zero[i][0]][zero[i][1]] = g.map[zero[i][0]][zero[i][1]]
                         }                       
                        } else if(g.map[oY - 1][oX - 1] === 'x'){
-                         global.db.data.users[m.sender].exp -= 10
-                        conn.sendButton(m.chat, 'GAME OVER🪦\n\n your *exp🧬* has been taken', author, null, [['Play Again', usedPrefix + 'mw start']], m)
+                         global.db.data.users[m.sender].exp += 99999
+                        conn.sendButton(m.chat, 'YOU WIN🎊🎉\n\n *🎁Hadiah/gift:* 9999Exp🧬', author, null, [['Play Again', usedPrefix + 'mw start']], m)
                         mines[m.chat] = {}
                         game = false
-                      
-                      return conn.sendButton(m.chat, await minesweeper.generate_string(g.map) + '\n' + '*You Lose*', author, null, [['Again', usedPrefix + 'mw start']], m)
+                      global.db.data.users[m.sender].exp -= 100
+                     
+                      return conn.sendButton(m.chat, await minesweeper.generate_string(g.map) + '\n' + '*You Lose* Exp -100', author, null, [['Again', usedPrefix + 'mw start']], m)
                     }
                 }
               conn.sendButton(m.chat, await minesweeper.generate_string(g.current) + '\n' + 'if you win you can get *exp🧬*', author, null, [['Giveup🖐️', usedPrefix + 'mw nyerah']], m)
