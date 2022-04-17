@@ -39,3 +39,7 @@ handler.tags = ['audio']
 handler.command = /^(bass|blown|deep|earrape|fas?t|nightcore|reverse|robot|slow|smooth|tupai|squirrel|chipmunk)$/i
 
 export default handler
+
+function getRandom(ext) {
+      return `${Math.floor(Math.random() * 10000)}${ext}`
+        }
