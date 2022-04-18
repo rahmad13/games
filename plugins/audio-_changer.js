@@ -26,7 +26,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                 unlinkSync(media)
                 if (err) throw `_*Error!*_`
                 let buff = readFileSync(ran)
-                conn.sendFile(m.chat, buff, ran, null, m, /vn/.test(args[0]), { quoted: m, mimetype: 'audio/mp4' })
+                conn.sendFile(m.chat, buff, ran, null, m, /vn/.test(args[0]), m, null, { mimetype: 'audio/mp4' })
                 unlinkSync(ran)
             })
         } else throw `Balas vn/audio dengan perintah *${usedPrefix + command}*`
