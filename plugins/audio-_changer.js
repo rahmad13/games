@@ -1,4 +1,4 @@
-
+import path, { join } from 'path'
 import { unlinkSync, readFileSync } from 'fs'
 import { exec } from 'child_process'
 
