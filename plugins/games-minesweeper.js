@@ -1,9 +1,8 @@
 import minesweeper from '../lib/mwgrip.js'
-//kelupaan
+
 global.mines = {}
 var game = false
 
-//Taruh sini lah
 let handler = async (m, { conn, command, args, usedPrefix }) => {
         const orgs = args[0]
 	const oX = args[1]
@@ -17,9 +16,11 @@ let handler = async (m, { conn, command, args, usedPrefix }) => {
 *▶️ start* - <Start The Game/Memulai Permainan>
 *🔓 open* - <to open/Untuk Membuka>
 *🔽Surend/Nyerah* - <to give up/menyerah>
+
 *example:* .Minesweeper start
 
-Jika menang Anda dapat *9000 exp🧬* / if you win you get *9000 exp🧬* \n Follow github:@Rizxyu`)
+
+Jika menang Anda dapat *9000 exp🧬* / if you win you get *9000 exp🧬*`)
    
     switch (orgs.toLowerCase()) {
 
@@ -63,7 +64,7 @@ if(F){
                         game = false
                       global.db.data.users[m.sender].exp -= 100
                      
-                      return conn.sendButton(m.chat, await minesweeper.generate_string(g.map) + '\n' + '*You Lose* Exp -100', author, null, [['Again', usedPrefix + 'mw start']], m)
+                      return conn.sendButton(m.chat, await minesweeper.generate_string(g.map) + '\n' + '*You Lose😔* Exp -100', author, null, [['Again', usedPrefix + 'mw start']], m)
                     }
                 }
               conn.sendButton(m.chat, await minesweeper.generate_string(g.current) + '\n' + 'if you win you can get *exp🧬*', author, null, [['Giveup🖐️', usedPrefix + 'mw nyerah']], m)
