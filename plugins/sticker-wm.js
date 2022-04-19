@@ -13,21 +13,21 @@ let handler = async (m, { conn, text }) => {
     let q = m.quoted ? m.quoted : m
     let mime = m.quoted.mimetype || ''
     if (/webp/.test(mime)) {
-      let img = await q.download()
+      let img = await q.download?.()
       let out = await uploadFile(img)
-      stiker = await sticker(0, out, packname || '', author || '')
+      stiker = await sticker(false, out, packname || '', author || '')
     } else if (/image/.test(mime)) {
-      let img = await q.download()
+      let img = await q.download?.()
       let out = await uploadImage(img)
-      stiker = await sticker(0, out, packname || '', author || '')
+      stiker = await sticker(false, out, packname || '', author || '')
     } else if (/video/.test(mime)) {
       if ((q.msg || q).seconds > 11) return m.reply('maks 10 detik!')
-      let img = await q.download()
+      let img = await q.download?.()
       let out = await uploadImage(img)
-      stiker = await sticker(0, out, packname || '', author || '')
+      stiker = await sticker(false, out, packname || '', author || '')
     }
   } finally {
-    if (stiker) await conn.sendFile(m.chat, stiker, '', '', m, 0, { asSticker: true })
+    if (stiker) await conn.sendFile(m.chat, stiker, '', '', m, null, { asSticker: true })
     else throw `Balas stiker dengan perintah *${usedPrefix + command} <teks>|<teks>*`
   }
 }
