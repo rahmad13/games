@@ -27,7 +27,7 @@ let handler = async (m, { conn, text }) => {
       stiker = await sticker(false, out, packname || '', author || '')
     }
   } finally {
-    if (stiker) await conn.sendFile(m.chat, stiker, '', '', m, null, { asSticker: true })
+    if (stiker) await conn.sendFile(m.chat, stiker, 'stiker.webp', '', m, null, { asSticker: true })
     else throw `Balas stiker dengan perintah *${usedPrefix + command} <teks>|<teks>*`
   }
 }
