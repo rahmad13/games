@@ -9,30 +9,30 @@ let handler = async (m, { conn, text }) => {
   let stiker = false
   try {
     let [packname, ...author] = text.split`|`
-    author = (author || []).join(`|`)
+    author = (author || []).join('|')
     let q = m.quoted ? m.quoted : m
     let mime = m.quoted.mimetype || ''
     if (/webp/.test(mime)) {
-      let img = await q.download?.()
+      let img = await m.quoted.download()
       let out = await uploadFile(img)
-      stiker = await sticker(false, out, packname || '', author || '')
+      stiker = await sticker( out, packname || '', author || '')
     } else if (/image/.test(mime)) {
-      let img = await q.download?.()
+      let img = await m.quoted.download()
       let out = await uploadImage(img)
-      stiker = await sticker(false, out, packname || '', author || '')
+      stiker = await sticker( out, packname || '', author || '')
     } else if (/video/.test(mime)) {
       if ((q.msg || q).seconds > 11) return m.reply('maks 10 detik!')
-      let img = await q.download?.()
+      let img = await m.quoted.download()
       let out = await uploadImage(img)
-      stiker = await sticker(false, out, packname || '', author || '')
+      stiker = await sticker( out, packname || '', author || '')
     }
   } finally {
-    if (stiker) await conn.sendFile(m.chat, stiker, 'stiker.webp', '', m, null, { asSticker: true })
+    if (stiker) await conn.sendFile(m.chat, stiker, 'stiker.webp', '', m, false, { asSticker: true })
     else throw `Balas stiker dengan perintah *${usedPrefix + command} <teks>|<teks>*`
   }
 }
 handler.help = ['wm <packname>|<author>']
 handler.tags = ['sticker']
-handler.command = /^s(wm)$/i
+handler.command = /^(wm)$/i
 
 export default handler
