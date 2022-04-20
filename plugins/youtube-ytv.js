@@ -1,4 +1,4 @@
-let limit = 80
+let limit = 20
 import fetch from 'node-fetch'
 import { youtubedl, youtubedlv2, youtubedlv3 } from '@bochilteam/scraper';
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
@@ -11,7 +11,8 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
   for (let i in _video) {
     try {
       video = _video[i]
-      isLimit = limitedSize < video.fileSize
+      isLimit = limitedSize * 1024 < video.fileSize
+      m.reply(isLimit ? `Size ${video.filesizeh}\nUkuran file diatas ${limit} MB, download sendiri: ${link}` : wait)
       if (isLimit) continue
       link = await video.download()
       if (link) res = await fetch(link)
