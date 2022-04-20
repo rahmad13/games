@@ -5,7 +5,6 @@ import { webp2png } from '../lib/webp2mp4.js'
 
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!m.quoted) throw 'Quoted the sticker!'
   let stiker = false
   try {
     let [packname, ...author] = text.split`|`
@@ -14,6 +13,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let mime = m.quoted.mimetype || ''
     if (/webp/.test(mime)) {
       let img = await m.quoted.download()
+      if (!img) throw 'Reply a sticker!'
       stiker = await addExif(img, packname || '', author || '')
     } else if (/image/.test(mime)) {
       let imge = await m.quoted.download()
