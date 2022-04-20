@@ -12,7 +12,7 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
     try {
       video = _video[i]
       isLimit = limitedSize < video.fileSize
-      m.reply(isLimit ? `Size ${video.filesizeh}\nUkuran file diatas ${limit} MB, download sendiri: ${link}` : wait)
+      m.reply(isLimit ? `Size ${video.filesizeh}\nUkuran file diatas ${limit} MB, download sendiri: ${link}` : 'process...')
       if (isLimit) continue
       link = await video.download()
       if (link) res = await fetch(link)
@@ -26,8 +26,6 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
     }
   }
   if ((!(source instanceof ArrayBuffer) || !link || !res.ok) && !isLimit) throw 'Error: ' + (lastError || 'Can\'t download video')
-  if (!isY && !isLimit) await conn.reply(m.chat,`process...
-`, m)
   let _thumb = {}
   try { _thumb = { thumbnail: await (await fetch(thumbnail)).buffer() } }
   catch (e) { }
