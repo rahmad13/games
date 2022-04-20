@@ -4,7 +4,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
      try {
     const tt = await tiktok(args[0])
-   conn.sendFile(m.chat, tt.result.nowm, 'tiktok.mp4, `Nama :* ${ttdata.meta.author.nickname}\n*Deskripsi :* ${ttdata.meta.desc}\n*Durasi* : ${ttdata.meta.video.duration}`, m )
+   conn.sendFile(m.chat, tt.result.nowm, 'tiktok.mp4', `Nama :* ${ttdata.meta.author.nickname}\n*Deskripsi :* ${ttdata.meta.desc}\n*Durasi* : ${ttdata.meta.video.duration}`, m)
    } catch (e) {
      m.reply("Server Down/Eror Please try again")
    }
