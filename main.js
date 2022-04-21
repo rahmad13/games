@@ -22,6 +22,7 @@ import yargs from 'yargs';
 import { spawn } from 'child_process';
 import lodash from 'lodash';
 import syntaxerror from 'syntax-error';
+import Readline from 'readline';
 import { tmpdir } from 'os';
 import { format } from 'util';
 import { makeWASocket, protoType, serialize } from './lib/simple.js';
