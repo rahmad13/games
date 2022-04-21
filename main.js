@@ -112,7 +112,7 @@ const connectionOptions = {
 
 global.conn = makeWASocket(connectionOptions)
 conn.isInit = false
-if (fs.existsSync(authFile)) conn.loadAuthInfo(authFile)
+if (existsSync(authFile)) conn.loadAuthInfo(authFile)
 if (opts['trace']) conn.logger.level = 'trace'
 if (opts['debug']) conn.logger.level = 'debug'
 if (opts['big-qr'] || opts['server']) conn.on('qr', qr => generate(qr, { small: false }))
@@ -182,7 +182,7 @@ conn.prepareMessageMedia = (buffer, mediaType, options = {}) => {
   })
   conn.connect().then(async () => {
     if (global.db.data == null) await loadDatabase()
-    fs.writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
+    writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
     global.timestamp.connect = new Date
   })
 }
