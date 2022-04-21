@@ -6,7 +6,7 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
   let chat = global.db.data.chats[m.chat]
   const isY = /y(es)/gi.test(args[1])
   const { thumbnail, audio: _audio, title } = await youtubedl(args[0]).catch(async _ => await youtubedlv2(args[0])).catch(async _ => await youtubedlv3(args[0]))
-  const limitedSize = (isPrems || isOwner ? 99 : limit) * 1024
+  const limitedSize = (limit) * 1024
   let audio, source, res, link, lastError, isLimit
   for (let i in _audio) {
     try {
@@ -25,7 +25,7 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
     }
   }
   if ((!(source instanceof ArrayBuffer) || !link || !res.ok) && !isLimit) throw 'Error: ' + (lastError || 'Can\'t download audio')
-  if (!isY && !isLimit) await conn.reply(m.chat, "Process..", m)
+  m.reply(isLimit ? `Size ${video.filesizeH}\nUkuran file diatas ${limit} MB, download sendiri: ${link}` : wait)
   if (!isLimit) await conn.sendFile(m.chat, source, title+".mp3", '', m, null, {
     asDocument: true
   })
