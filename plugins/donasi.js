@@ -12,7 +12,7 @@ conn.sendHydrated(m.chat, `
 ╰────
 
 Seiklasnya aja:>
-`, author, null, `https://rizxyu.github.io/Template-Aboutme/`, `Website`, null, null, [[null, null]], m)
+`, author, `https://github.com/Rizxyu/games-wabot-md/raw/private/plugins/donasi.js`, `https://rizxyu.github.io/Template-Aboutme/`, `Website`, null, null, [[null, null]], m)
 handler.help = ['donasi']
 handler.tags = ['info']
 handler.command = /^dona(te|si)$/i
