@@ -25,7 +25,7 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
     }
   }
   if ((!(source instanceof ArrayBuffer) || !link || !res.ok) && !isLimit) throw 'Error: ' + (lastError || 'Can\'t download audio')
-  m.reply(isLimit ? `Size ${video.filesizeH}\nUkuran file diatas ${limit} MB, download sendiri: ${link}` : wait)
+  m.reply(isLimit ? `Ukuran file diatas ${limit} MB, download sendiri: ${source}` : wait)
   if (!isLimit) await conn.sendFile(m.chat, source, title+".mp3", '', m, null, {
     asDocument: true
   })
