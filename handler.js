@@ -739,18 +739,18 @@ Untuk mematikan fitur ini, ketik
 
 global.dfail = (type, m, conn) => {
     let msg = {
-        rowner: 'Perintah ini hanya dapat digunakan oleh _*OWWNER!1!1!*_',
-        owner: 'Perintah ini hanya dapat digunakan oleh _*Owner Bot*_!',
-        mods: 'Perintah ini hanya dapat digunakan oleh _*Moderator*_ !',
-        premium: 'Perintah ini hanya untuk member _*Premium*_ !',
-        group: 'Perintah ini hanya dapat digunakan di grup!',
-        private: 'Perintah ini hanya dapat digunakan di Chat Pribadi!',
-        admin: 'Perintah ini hanya untuk *Admin* grup!',
-        botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
-        unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*',
+        rowner: '*AKSES DENIED*\nPerintah ini hanya dapat digunakan oleh _*OWWNER!1!1!*_',
+        owner: '*AKSES DENIED*\nPerintah ini hanya dapat digunakan oleh _*Owner Bot*_!',
+        mods: '*AKSES DENIED*\nPerintah ini hanya dapat digunakan oleh _*Moderator*_ !',
+        premium: '*AKSES DENIED*\nPerintah ini hanya untuk member _*Premium*_ !',
+        group: '*AKSES DENIED*\nPerintah ini hanya dapat digunakan di grup!',
+        private: '*AKSES DENIED*\nPerintah ini hanya dapat digunakan di Chat Pribadi!',
+        admin: '*AKSES DENIED*\nPerintah ini hanya untuk *Admin* grup!',
+        botAdmin: '*AKSES DENIED*\nJadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
+        unreg: '*AKSES DENIED*\nSilahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*',
         restrict: 'Fitur ini di *disable*!'
     }[type]
-    if (msg) return m.reply(msg)
+    if (msg) return conn.sendHydrated(m.chat, msg, author, "https://images6.alphacoders.com/106/1061828.png", "https://chat.whatsapp.com/KamZimB6d8R3c2C4PepN6Q", "GC Whatsapp", null, null, [[null, null]], m)
 }
 
 let file = global.__filename(import.meta.url, true)
