@@ -1,8 +1,8 @@
 //import { MessageType } from '@adiwajshing/baileys'
 import { is } from 'cheerio/lib/api/traversing'
 import qrcode 'qrcode'
-import fs from 'fs'
-import path from'path'
+import { readFile, unwatchFile, watchFile, readFileSync } from 'fs'
+import path, { join } from'path'
 
 if (global.conns instanceof Array) console.log()// for (let i of global.conns) global.conns[i] && global.conns[i].user ? global.conns[i].close().then(() => delete global.conns[id] && global.conns.splice(i, 1)).catch(global.conn.logger.error) : delete global.conns[i] && global.conns.splice(i, 1)
 else global.conns = []
