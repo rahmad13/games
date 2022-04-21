@@ -112,6 +112,7 @@ const connectionOptions = {
 
 global.conn = makeWASocket(connectionOptions)
 conn.isInit = false
+/**
 if (existsSync(authFile)) conn.loadAuthInfo(authFile)
 if (opts['trace']) conn.logger.level = 'trace'
 if (opts['debug']) conn.logger.level = 'debug'
@@ -129,7 +130,7 @@ if (opts['test']) {
     jid: '2219191@s.whatsapp.net',
     name: 'test',
     phone: {}
-  }
+  }**/
 
 
 if (!opts['test']) {
@@ -141,7 +142,7 @@ if (!opts['test']) {
     } catch (e) { console.error(e) }
   }, 60 * 1000)
 }
-
+/**
 conn.prepareMessageMedia = (buffer, mediaType, options = {}) => {
     return {
       [mediaType]: {
@@ -185,7 +186,7 @@ conn.prepareMessageMedia = (buffer, mediaType, options = {}) => {
     writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
     global.timestamp.connect = new Date
   })
-}
+}**/
 if (opts['server']) (await import('./server.js')).default(global.conn, PORT)
 
 
