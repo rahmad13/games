@@ -33,10 +33,14 @@ global.APIKeys = { // APIKey Here
 }
 
 // Sticker WM
-global.packname = 'wa.me/6288287024581'
+global.packname = 'Use bot 6288287024581'
 global.author = 'Jinwo'
 
 global.multiplier = 69 // The higher, The harder levelup
+
+//
+global.wait = 'Process...'
+global.render = 'wait render'
 
 //Rpg
 global.rpg = {
