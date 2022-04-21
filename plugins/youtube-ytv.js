@@ -6,13 +6,13 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
   let chat = global.db.data.chats[m.chat]
   const isY = /y(es)/gi.test(args[1])
   const { thumbnail, video: _video, title } = await youtubedl(args[0]).catch(async _ => await youtubedlv2(args[0])).catch(async _ => await youtubedlv3(args[0]))
-  const limitedSize = (isPrems || isOwner ? 99 : limit) * 1024
+  const limitedSize = (isPrems ? 99 : limit) * 1024
   let video, source, res, link, lastError, isLimit
   for (let i in _video) {
     try {
       video = _video[i]
       isLimit = limitedSize < video.fileSize
-      m.reply(isLimit ? `Size ${video.filesizeh}\nUkuran file diatas ${limit} MB, download sendiri: ${link}` : 'process...')
+      m.reply(isLimit ? `Size ${video.filesizeH}\nUkuran file diatas ${limit} MB, download sendiri: ${link}` : 'process...')
       if (isLimit) continue
       link = await video.download()
       if (link) res = await fetch(link)
@@ -29,6 +29,7 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
   let _thumb = {}
   try { _thumb = { thumbnail: await (await fetch(thumbnail)).buffer() } }
   catch (e) { }
+  m.reply(isLimit ? `Size ${video.filesizeH}\nUkuran file diatas ${limit} MB, download sendiri: ${link}` : wait)
   if (!isLimit) await conn.sendFile(m.chat, link, title + '.mp4', `
 *📌Title:* ${title}
 *🗎 Filesize:* ${video.fileSizeH}
