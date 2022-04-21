@@ -5,6 +5,7 @@ import { createRequire } from "module"; // Bring in the ability to create the 'r
 import path, { join } from 'path'
 import { fileURLToPath, pathToFileURL } from 'url'
 import { platform } from 'process'
+
 global.__filename = function filename(pathURL = import.meta.url, rmPrefix = platform !== 'win32') { return rmPrefix ? /file:\/\/\//.test(pathURL) ? fileURLToPath(pathURL) : pathURL : pathToFileURL(pathURL).toString() }; global.__dirname = function dirname(pathURL) { return path.dirname(global.__filename(pathURL, true)) }; global.__require = function require(dir = import.meta.url) { return createRequire(dir) }
 
 import * as ws from 'ws';
@@ -14,6 +15,7 @@ import {
   unlinkSync,
   existsSync,
   readFileSync,
+  writeFileSync,
   watch
 } from 'fs';
 import yargs from 'yargs';
@@ -31,6 +33,16 @@ import {
 } from './lib/mongoDB.js';
 const {
   useSingleFileAuthState,
+  default: _makeWaSocket,
+    makeWALegacySocket,
+    proto,
+    downloadContentFromMessage,
+    jidDecode,
+    areJidsSameUser,
+    generateForwardMessageContent,
+    generateWAMessageFromContent,
+    WAMessageStubType,
+    extractMessageContent,
   DisconnectReason
 } = await import('@adiwajshing/baileys')
 
@@ -40,6 +52,9 @@ const PORT = process.env.PORT || process.env.SERVER_PORT || 3000
 
 protoType()
 serialize()
+
+const rl = Readline.createInterface(process.stdin, process.stdout)
+
 
 global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
 // global.Fn = function functionCallBack(fn, ...args) { return fn.call(global.conn, ...args) }
@@ -96,6 +111,25 @@ const connectionOptions = {
 
 global.conn = makeWASocket(connectionOptions)
 conn.isInit = false
+if (fs.existsSync(authFile)) conn.loadAuthInfo(authFile)
+if (opts['trace']) conn.logger.level = 'trace'
+if (opts['debug']) conn.logger.level = 'debug'
+if (opts['big-qr'] || opts['server']) conn.on('qr', qr => generate(qr, { small: false }))
+if (opts['server']) require('./server')(global.conn, PORT)
+
+conn.user = {
+  jid: '',
+  name: '',
+  phone: {},
+  ...(conn.user || {})
+}
+if (opts['test']) {
+  conn.user = {
+    jid: '2219191@s.whatsapp.net',
+    name: 'test',
+    phone: {}
+  }
+
 
 if (!opts['test']) {
   setInterval(async () => {
@@ -105,6 +139,51 @@ if (!opts['test']) {
 
     } catch (e) { console.error(e) }
   }, 60 * 1000)
+}
+
+conn.prepareMessageMedia = (buffer, mediaType, options = {}) => {
+    return {
+      [mediaType]: {
+        url: '',
+        mediaKey: '',
+        mimetype: options.mimetype || '',
+        fileEncSha256: '',
+        fileSha256: '',
+        fileLength: buffer.length,
+        seconds: options.duration,
+        fileName: options.filename || 'file',
+        gifPlayback: options.mimetype == 'image/gif' || undefined,
+        caption: options.caption,
+        ptt: options.ptt
+      }
+    }
+  }
+
+  conn.sendMessage = async (chatId, content, type, opts = {}) => {
+    let message = await conn.prepareMessageContent(content, type, opts)
+    let waMessage = await conn.prepareMessageFromContent(chatId, message, opts)
+    if (type == 'conversation') waMessage.key.id = require('crypto').randomBytes(16).toString('hex').toUpperCase()
+    conn.emit('chat-update', {
+      jid: conn.user.jid,
+      hasNewMessage: true,
+      count: 1,
+      messages: {
+        all() {
+          return [waMessage]
+        }
+      }
+    })
+  }
+  rl.on('line', line => conn.sendMessage('123@s.whatsapp.net', line.trim(), 'conversation'))
+} else {
+  rl.on('line', line => {
+    process.send(line.trim())
+  })
+  conn.connect().then(async () => {
+    if (global.db.data == null) await loadDatabase()
+    fs.writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
+    global.timestamp.connect = new Date
+  })
 }
 if (opts['server']) (await import('./server.js')).default(global.conn, PORT)
 
