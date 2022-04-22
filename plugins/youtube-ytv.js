@@ -29,7 +29,7 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
   let _thumb = {}
   try { _thumb = { thumbnail: await (await fetch(thumbnail)).buffer() } }
   catch (e) { }
-  if (!isY && !isLimit) return m.reply(isLimit ? `Size ${video.filesizeH}\nUkuran file diatas ${limit} MB, download sendiri: ${link}` : wait)
+  if (!isY && !isLimit) m.reply(isLimit ? `Size ${video.filesizeH}\nUkuran file diatas ${limit} MB, download sendiri: ${link}` : wait)
   if (!isLimit) await conn.sendFile(m.chat, link, title + '.mp4', `
 *📌Title:* ${title}
 *🗎 Filesize:* ${video.fileSizeH}
