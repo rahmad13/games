@@ -176,6 +176,8 @@ export async function handler(chatUpdate) {
                     user.lastmonthly = 0
                 if (!isNumber(user.gamemines))
                     user.gamemines = false
+                if (!isNumber(user.pc))
+                    user.pc = 0
             } else
                 global.db.data.users[m.sender] = {
                     exp: 0,
@@ -247,6 +249,7 @@ export async function handler(chatUpdate) {
                     lastmonthly: 0,
 
                     gamemines: false,
+                    pc: false,
                 }
             let chat = global.db.data.chats[m.chat]
             if (typeof chat !== 'object')
