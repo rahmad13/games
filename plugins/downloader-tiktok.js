@@ -5,7 +5,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     const { result } = await tiktokvid(args[0]).catch(async _ => await musicaldown(args[0]))
     const done = result.nowatermark || result.watermark || result.video || result.video_original
     if (!done) throw 'Can\'t download video!'
-    conn.sendFile(m.chat, done, '', `🔗 *Url:* ${tt.result.nowatermark}`, m)
+    conn.sendFile(m.chat, done, '', `🔗 *Url:* ${done}`, m)
 }
 handler.help = ['tiktok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
