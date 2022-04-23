@@ -26,6 +26,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         autolevelup: false,
         money: 0,
       }
+     }
      let math = max - xp
     let dbr = `
 *🏷️ Nama:* *(${name})* ${registered ? '(' + name + ') ' : ''} (@${who.replace(/@.+/, '')})
