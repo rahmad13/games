@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     let { exp, limit, level, role, money, lastclaim, lastweekly, registered, regTime, age, banned } = global.db.data.users[who]
     let { min, xp, max } = xpRange(level, global.multiplier)
     let name = await conn.getName(who)
-    let pp = await this.profilePictureUrl(who).catch(_ => './src/avatar_contact.png')
+    let pp = await conn.profilePictureUrl(who).catch(_ => './src/avatar_contact.png')
     if (typeof global.db.data.users[who] == "undefined") {
       global.db.data.users[who] = {
         exp: 0,
