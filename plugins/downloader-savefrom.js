@@ -13,6 +13,6 @@ const done = hd.url || sd.url
 handler.help = ['savefrom'].map(v => v + ' <url>')
 handler.tags = ['downloader']
 
-handler.command = /^(save(from)?(dl)?(aio)?(video)?)$/i
+handler.command = /^(save(from)?)$/i
 
 export default handler
