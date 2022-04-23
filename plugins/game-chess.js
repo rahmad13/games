@@ -1,16 +1,12 @@
 import EventEmitter from "events"
-
-
-import fs from "fs"
-import Game from "chess-node"
-import Games from Game.Game
+import { Game } from "chess-node"
+import Games from Game
 import { genRealMove } from Game
 import CIG from 'chess-image-generator-ts'
-import { MessageType } from "@adiwajshing/baileys"
 import games from new Map()
  import challenges from new Map()
  import ongoing from new Set()
- import chess from "../lib/chess.js"
+ import { chess } from "../lib/chess.js"
  import Chess from chess()
  import { parseBoard } from Chess
         
