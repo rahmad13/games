@@ -5,7 +5,7 @@ import CIG from 'chess-image-generator-ts'
 const games = new Map()
  const challenges = new Map()
  const ongoing = new Set()
- import { chess, parseBoard } from "../lib/chess.js"
+ import { chess } from "../lib/chess.js"
  import Chess from chess()
  import { parseBoard } from Chess
         
