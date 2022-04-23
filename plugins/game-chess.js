@@ -1,14 +1,12 @@
 import EventEmitter from "events"
-import { Game } from "chess-node"
+import { Game, genRealMove } from "chess-node"
 import Games from Game
-import { genRealMove } from Game
 import CIG from 'chess-image-generator-ts'
 import games from new Map()
  import challenges from new Map()
  import ongoing from new Set()
- import { chess } from "../lib/chess.js"
+ import { chess, parseBoard } from "../lib/chess.js"
  import Chess from chess()
- import { parseBoard } from Chess
         
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 
