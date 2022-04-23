@@ -38,7 +38,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 ${global.author}`
 
-conn.sendFile(m.chat, pp, 'propil.jpg', dbr, m , { mentions: conn.parseMention(caption) })
+conn.sendFile(m.chat, pp, 'propil.jpg', dbr, m , { mentions: conn.parseMention(dbr) })
 
 }
 
