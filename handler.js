@@ -178,6 +178,8 @@ export async function handler(chatUpdate) {
                     user.gamemines = false
                 if (!isNumber(user.pc))
                     user.pc = 0
+                 if (!isNumber(user.job))
+                    user.job = 0
             } else
                 global.db.data.users[m.sender] = {
                     exp: 0,
@@ -250,6 +252,7 @@ export async function handler(chatUpdate) {
 
                     gamemines: false,
                     pc: false,
+                    job: 0,
                 }
             let chat = global.db.data.chats[m.chat]
             if (typeof chat !== 'object')
