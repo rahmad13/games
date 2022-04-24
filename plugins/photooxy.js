@@ -15,10 +15,10 @@ pShadow,
 
 let handler = async (m, { conn, text, args, usedPrefix, command }) => {
 
-if (!args[1]) throw 'textnya coy'
+if (!args[0]) throw 'textnya coy'
 
 try {
-const {result} = await command(args[1])
+const {result} = await command(args[0])
 
 conn.sendFile(m.chat, result.url, 'potooxy.jpg', `*📎Url:* ${result.url}`, m)
 } catch (e) {
