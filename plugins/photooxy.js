@@ -15,15 +15,19 @@ pShadow,
 
 let handler = async (m, { conn, text, args, usedPrefix, command }) => {
 
-if (!args[0]) throw 'textnya coy'
+if (!args[0]) throw 'List tersedia
+pRomantic
+pSmoke
+pNaruto
+'
 
 
-const {result} = await command(args[0] + args[1])
+const {result} = await args[0](args[1] + args[2])
 conn.sendFile(m.chat, result.url, 'potooxy.jpg', `*📎Url:* ${result.url}`, m)
 
 }
 
-handler.help = ['pRomantic', 'pSmoke','pNaruto','pBurnPapper'].map(v => v + ' <text>')
+handler.help = ['photooxy'].map(v => v + ' <text | text>')
 handler.tags = ['photooxy']
-handler.command = /^(p(Smoke)?(Romantic)?(Naruto)?(BurnPapper)?)$/i
+handler.command = /^(p(hotooxy)?)$/i
 export default handler
