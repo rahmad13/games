@@ -31,15 +31,8 @@ let tags = {
 }
 const defaultMenu = {
   before: `
-
 👋🏻 Hai, *%name!* Im *%me*
 
-*YOUR PROFILE*
-⊕ 🧱 Limit : *%limit Limit*
-⊕ 🦸🏼‍♂️ Role : *%role*
-⊕ 🔼 Level : *%level (%exp / %maxexp)*
-⊕ 💫 Total XP : %totalexp ✨
- 
 *TIME & CALENDAR*
 ⊕ 📅 Tanggal: *%week, %date*
 ⊕ 🕰️ Waktu: *%time*
@@ -51,7 +44,7 @@ const defaultMenu = {
 📌 This bot is still in beta, if you find an error in the command bot, please report the owner. Thank you
 %readmore`.trimStart(),
   header: '━━⊣ *👾%category* ⊢━━',
-  body: ' • %cmd %islimit %isPremium',
+  body: ' › %cmd %islimit %isPremium',
   footer: '⊢━━━━━━━━━━━━━⊣\n',
   after: `
 *%npmname* | %version
@@ -155,7 +148,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/avatar_contact.png')
-    conn.sendHydrated2(m.chat, text.trim(), author, pp, 'https://chat.whatsapp.com/KamZimB6d8R3c2C4PepN6Q', 'Group Whatsapp','https://youtube.com/channel/UC3UAP0ikH_3_ICRP_3Ar-Lw', 'Youtube', [
+    conn.sendHydrated2(m.chat, text.trim(), author, pp, `${webs}`, 'Website',null, null, [
       ['Donate', '/donasi'],
       ['Owner', '/owner']
     ], m)
