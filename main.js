@@ -112,12 +112,6 @@ const connectionOptions = {
 
 global.conn = makeWASocket(connectionOptions)
 conn.isInit = false
-/**
-if (existsSync(authFile)) conn.loadAuthInfo(authFile)
-if (opts['trace']) conn.logger.level = 'trace'
-if (opts['debug']) conn.logger.level = 'debug'
-if (opts['big-qr'] || opts['server']) conn.on('qr', qr => generate(qr, { small: false }))
-if (opts['server']) require('./server')(global.conn, PORT)
 
 conn.user = {
   jid: '',
@@ -130,7 +124,7 @@ if (opts['test']) {
     jid: '2219191@s.whatsapp.net',
     name: 'test',
     phone: {}
-  }**/
+  }
 
 
 if (!opts['test']) {
@@ -142,51 +136,6 @@ if (!opts['test']) {
     } catch (e) { console.error(e) }
   }, 60 * 1000)
 }
-/**
-conn.prepareMessageMedia = (buffer, mediaType, options = {}) => {
-    return {
-      [mediaType]: {
-        url: '',
-        mediaKey: '',
-        mimetype: options.mimetype || '',
-        fileEncSha256: '',
-        fileSha256: '',
-        fileLength: buffer.length,
-        seconds: options.duration,
-        fileName: options.filename || 'file',
-        gifPlayback: options.mimetype == 'image/gif' || undefined,
-        caption: options.caption,
-        ptt: options.ptt
-      }
-    }
-  }
-
-  conn.sendMessage = async (chatId, content, type, opts = {}) => {
-    let message = await conn.prepareMessageContent(content, type, opts)
-    let waMessage = await conn.prepareMessageFromContent(chatId, message, opts)
-    if (type == 'conversation') waMessage.key.id = require('crypto').randomBytes(16).toString('hex').toUpperCase()
-    conn.emit('chat-update', {
-      jid: conn.user.jid,
-      hasNewMessage: true,
-      count: 1,
-      messages: {
-        all() {
-          return [waMessage]
-        }
-      }
-    })
-  }
-  rl.on('line', line => conn.sendMessage('123@s.whatsapp.net', line.trim(), 'conversation'))
-} else {
-  rl.on('line', line => {
-    process.send(line.trim())
-  })
-  conn.connect().then(async () => {
-    if (global.db.data == null) await loadDatabase()
-    writeFileSync(authFile, JSON.stringify(conn.base64EncodedAuthInfo(), null, '\t'))
-    global.timestamp.connect = new Date
-  })
-}**/
 if (opts['server']) (await import('./server.js')).default(global.conn, PORT)
 
 
