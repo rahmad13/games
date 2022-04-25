@@ -756,7 +756,7 @@ global.dfail = (type, m, conn) => {
         unreg: '*AKSES DENIED*\nSilahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*',
         restrict: 'Fitur ini di *disable*!'
     }[type]
-    if (msg) return conn.sendHydrated(m.chat, msg, author, "https://images6.alphacoders.com/106/1061828.png", "https://chat.whatsapp.com/KamZimB6d8R3c2C4PepN6Q", "GC Whatsapp", null, null, [[null, null]], m)
+    if (msg) return conn.sendHydrated(m.chat, msg, author, "https://images6.alphacoders.com/106/1061828.png", `${webs}`, "Website", null, null, [[null, null]], m)
 }
 
 let file = global.__filename(import.meta.url, true)
