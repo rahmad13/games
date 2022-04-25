@@ -5,6 +5,7 @@ import fs from 'fs'
 
 /**Owner number**/
 global.owner = [
+  ['62887436568613'],
   ['6282328303332'],
   ['6288287024581'],
   ['6285895171063'],
@@ -33,8 +34,8 @@ global.APIKeys = { // APIKey Here
 }
 
 // Sticker WM
-global.packname = 'Use bot 6288287024581'
-global.author = 'Jinwo'
+global.packname = 'Use bot 6288287024581 FOR FREE'
+global.author = 'SXZYBOT'
 
 global.multiplier = 69 // The higher, The harder levelup
 
