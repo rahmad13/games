@@ -7,9 +7,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!done) throw 'Can\'t download audio!'
     conn.sendFile(m.chat, done, 'tiktok.mp3', null, m)
 }
-handler.help = ['tiktok'].map(v => v + ' <url>')
+handler.help = ['tiktokmusik'].map(v => v + ' <url>')
 handler.tags = ['downloader']
 
-handler.command = /^(tik(tok)?(music)?(mp3)?)$/i
+handler.command = /^(tiktokmusik)$/i
 
 export default handler
