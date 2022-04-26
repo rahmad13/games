@@ -33,11 +33,8 @@ const defaultMenu = {
   before: `
 👋🏻 Hai, *%name!* Im *%me*
 
-*TIME & CALENDAR*
 ⊕ 📅 Tanggal: *%week, %date*
 ⊕ 🕰️ Waktu: *%time*
-
-*BOT STATUS*
 ⊕ 📈 Bot Online: *%uptime (%muptime)*
 ⊕ 📊 Register: %totalreg
 
