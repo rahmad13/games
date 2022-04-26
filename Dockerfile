@@ -2,7 +2,10 @@ FROM node:lts-buster
 
 RUN apt-get update && \
   apt-get install -y \
+  neofetch \
   ffmpeg \
+  wget \
+  chromium \ 
   imagemagick \
   webp && \
   apt-get upgrade -y && \
