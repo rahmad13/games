@@ -1,11 +1,10 @@
-//process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 import './config.js';
 
 import { createRequire } from "module"; // Bring in the ability to create the 'require' method
 import path, { join } from 'path'
 import { fileURLToPath, pathToFileURL } from 'url'
 import { platform } from 'process'
-
 global.__filename = function filename(pathURL = import.meta.url, rmPrefix = platform !== 'win32') { return rmPrefix ? /file:\/\/\//.test(pathURL) ? fileURLToPath(pathURL) : pathURL : pathToFileURL(pathURL).toString() }; global.__dirname = function dirname(pathURL) { return path.dirname(global.__filename(pathURL, true)) }; global.__require = function require(dir = import.meta.url) { return createRequire(dir) }
 
 import * as ws from 'ws';
@@ -15,35 +14,24 @@ import {
   unlinkSync,
   existsSync,
   readFileSync,
-  writeFileSync,
   watch
 } from 'fs';
 import yargs from 'yargs';
 import { spawn } from 'child_process';
 import lodash from 'lodash';
 import syntaxerror from 'syntax-error';
-import Readline from 'readline';
 import { tmpdir } from 'os';
 import { format } from 'util';
 import { makeWASocket, protoType, serialize } from './lib/simple.js';
 import { Low, JSONFile } from 'lowdb';
-import pino from 'pino';
+// import pino from 'pino';
 import {
   mongoDB,
   mongoDBV2
 } from './lib/mongoDB.js';
+import store from './lib/store.js'
+
 const {
-  useSingleFileAuthState,
-  default: _makeWaSocket,
-    makeWALegacySocket,
-    proto,
-    downloadContentFromMessage,
-    jidDecode,
-    areJidsSameUser,
-    generateForwardMessageContent,
-    generateWAMessageFromContent,
-    WAMessageStubType,
-    extractMessageContent,
   DisconnectReason
 } = await import('@adiwajshing/baileys')
 
@@ -53,9 +41,6 @@ const PORT = process.env.PORT || process.env.SERVER_PORT || 3000
 
 protoType()
 serialize()
-
-const rl = Readline.createInterface(process.stdin, process.stdout)
-
 
 global.API = (name, path = '/', query = {}, apikeyqueryname) => (name in global.APIs ? global.APIs[name] : name) + path + (query || apikeyqueryname ? '?' + new URLSearchParams(Object.entries({ ...query, ...(apikeyqueryname ? { [apikeyqueryname]: global.APIKeys[name in global.APIs ? global.APIs[name] : name] } : {}) })) : '')
 // global.Fn = function functionCallBack(fn, ...args) { return fn.call(global.conn, ...args) }
@@ -67,6 +52,8 @@ const __dirname = global.__dirname(import.meta.url)
 
 global.opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
 global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ/i!#$%+£¢€¥^°=¶∆×÷π√✓©®:;?&.\\-').replace(/[|\\{}()[\]^$+*?.\-\^]/g, '\\$&') + ']')
+
+// global.opts['db'] = process.env['db']
 
 global.db = new Low(
   /https?:\/\//.test(opts['db'] || '') ?
@@ -102,7 +89,7 @@ global.loadDatabase = async function loadDatabase() {
 loadDatabase()
 
 global.authFile = `${opts._[0] || 'session'}.data.json`
-const { state, saveState } = useSingleFileAuthState(global.authFile)
+const { state, saveState } = store.useSingleFileAuthState(global.authFile)
 
 const connectionOptions = {
   printQRInTerminal: true,
@@ -112,13 +99,6 @@ const connectionOptions = {
 
 global.conn = makeWASocket(connectionOptions)
 conn.isInit = false
-
-conn.user = {
-  jid: '',
-  name: '',
-  phone: {},
-  ...(conn.user || {})
-}
 
 if (!opts['test']) {
   setInterval(async () => {
@@ -196,7 +176,7 @@ global.reloadHandler = async function (restatConn) {
   conn.groupsUpdate = handler.groupsUpdate.bind(global.conn)
   conn.onDelete = handler.deleteUpdate.bind(global.conn)
   conn.connectionUpdate = connectionUpdate.bind(global.conn)
-  conn.credsUpdate = saveState.bind(global.conn)
+  conn.credsUpdate = saveState.bind(global.conn, true)
 
   conn.ev.on('messages.upsert', conn.handler)
   conn.ev.on('group-participants.update', conn.participantsUpdate)
