@@ -34,11 +34,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 *🏆Level* ${level}
 *🎋Role:* ${role}
 *🧬XP:* TOTAL ${exp} (${exp - min} / ${xp}) [${math <= 0 ? `Siap untuk *${usedPrefix}levelup*` : `${math} XP lagi untuk levelup`}]
-*📨Terdaftar:* ${registered ? 'Ya (' + new Date(regTime).toLocaleString() + ')' : 'Tidak'} ${lastclaim > 0 ? '\n*⏱️Terakhir Klaim:* ' + new Date(lastclaim).toLocaleString() : ''}
+*📨Terdaftar:* ${registered ? 'Ya (' + new Date(regTime).toLocaleString() + ')' : 'Tidak'} ${lastclaim > 0 ? '\n*⏱️Terakhir Klaim:* ' + new Date(lastclaim).toLocaleString() : ''}`
 
-${global.author}`
-
-conn.sendFile(m.chat, pp, 'propil.jpg', dbr, m , { mentions: conn.parseMention(dbr) })
+conn.sendFile(m.chat, pp, 'propil.jpg', dbr, m , { mentions: dbr })
 
 }
 
