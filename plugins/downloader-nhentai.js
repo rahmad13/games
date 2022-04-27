@@ -1,4 +1,4 @@
-import fs, {
+import {
 existsSync,
 mkdirSync,
 createWriteStream,
@@ -11,7 +11,7 @@ import request from 'request'
 
 import fetch from 'node-fetch'
 import topdf from 'image-to-pdf'
-import nhentai, {
+import {
 getDoujin
 } from'nhentai-node-api'
 
@@ -22,7 +22,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
    	await m.reply(wait)
 	let count = 0
 	let ResultPdf = []
-	let doujin = await nhentai.getDoujin(args[0])
+	let doujin = await getDoujin(args[0])
 	let title = doujin.title.default
 	let details = doujin.details
 	let parodies = details.parodies.map(v => v.name)
@@ -45,7 +45,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 	}
 
 	await new Promise((resolve) =>
-		topdf(ResultPdf, 'jpg')
+		topdf(ResultPdf, 'A4')
 		.pipe(createWriteStream('./nhentai/' + title + '.pdf'))
 		.on('finish', resolve)
 	)
