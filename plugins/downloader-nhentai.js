@@ -11,7 +11,9 @@ import request from 'request'
 
 import fetch from 'node-fetch'
 import topdf from 'image-to-pdf'
-import nhentai from'nhentai-node-api'
+import nhentai, {
+getDoujin
+} from'nhentai-node-api'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 
