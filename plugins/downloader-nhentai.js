@@ -4,7 +4,7 @@ mkdirSync,
 createWriteStream,
 unlinkSync,
 statSync,
-readFileSync,
+readFileSync
 } from 'fs'
 
 import request from 'request'
