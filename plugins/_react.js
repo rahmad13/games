@@ -1,6 +1,6 @@
 import {
 ReactionMessage
-} from "@adiwajshing/baileys")
+} from "@adiwajshing/baileys"
 
 let handler = async(m, { conn, usedPrefix, command, args }) => {
     if (!args[0]) throw `Masukkan emoticon nya.\n\nContoh: ${usedPrefix + command} 🇨🇳`
