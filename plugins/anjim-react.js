@@ -10,7 +10,7 @@ let handler = async(m, { conn, usedPrefix, command, args }) => {
             react.key: m.quoted.key
      
     
-    await conn.relayMessage(m.chat, ReactionMessage: react, m)
+    await conn.relayMessage(m.chat, ReactionMessage: react)
 }
 handler.command = /^(react)$/i
 handler.help = ['reaact']
