@@ -33,7 +33,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 	let categories = details.categories.map(v => v.name)
 	let array_page = doujin.pages
 
-	conn.sendFile(m.chat,await (await fetch(array_page[0])).buffer(), 'nhentai.jpg', `*${title}*\n_${doujin.title.native || ''}_\nLanguage: ${doujin.language}\nParodies: ${parodies.join(', ')}\nGroups: ${groups.join(', ')}\nArtists: ${artists.join(', ')}\nTags: ${tags.join(', ')}\nCategories: ${categories.join(', ')}\nPages: ${array_page.length}\nFavorited: ${doujin.favorites}\nLink: ${doujin.link.replace('nhentai.net/g', 'cin.pw/v')}`, m)
+	conn.sendFile(m.chat, array_page[0], 'nhentai.jpg', `*${title}*\n_${doujin.title.native || ''}_\nLanguage: ${doujin.language}\nParodies: ${parodies.join(', ')}\nGroups: ${groups.join(', ')}\nArtists: ${artists.join(', ')}\nTags: ${tags.join(', ')}\nCategories: ${categories.join(', ')}\nPages: ${array_page.length}\nFavorited: ${doujin.favorites}\nLink: ${doujin.link.replace('nhentai.net/g', 'cin.pw/v')}`, m)
         
 	for (let index = 0; index < array_page.length; index++) {
 		if (!existsSync('./nhentai')) mkdirSync('./nhentai')
@@ -45,7 +45,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 	}
 
 	await new Promise((resolve) =>
-		topdf(ResultPdf, 'A4')
+		topdf(ResultPdf, 'jpg')
 		.pipe(createWriteStream('./nhentai/' + title + '.pdf'))
 		.on('finish', resolve)
 	)
