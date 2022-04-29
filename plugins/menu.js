@@ -31,21 +31,20 @@ let tags = {
 }
 const defaultMenu = {
   before: `
-👋🏻 Hai, *%name!* Im *%me*
-
-⊕ 📅 Tanggal: *%week, %date*
-⊕ 🕰️ Waktu: *%time*
-⊕ 📈 Bot Online: *%uptime (%muptime)*
-⊕ 📊 Register: %totalreg
+Hai, *%name!* Im *%me*
+📅 Tanggal: *%week, %date*
+🕰️ Waktu: *%time*
+📈 Bot Online: *%uptime (%muptime)*
+📊 Register: %totalreg
 
 📌 This bot is still in beta, if you find an error in the command bot, please report the owner. Thank you
-%readmore`.trimStart(),
-  header: '━━⊣ *👾%category* ⊢━━',
+%readmore
+Support me: saweria.co/sxzy
+`.trimStart(),
+  header: '*👾%category*',
   body: ' › %cmd %islimit %isPremium',
-  footer: '⊢━━━━━━━━━━━━━⊣\n',
+  footer: '\n',
   after: `
-*%npmname* | %version
-${'```%npmdesc```'}
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
