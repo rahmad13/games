@@ -1,5 +1,5 @@
-import fs from 'fs'
-import path, { join } from 'path'
+import { promises } from 'fs'
+import { join } from 'path'
 import { exec } from 'child_process'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         let q = m.quoted ? m.quoted : m
         let mime = (q.msg || q).mimetype || ''
         if (!/audio/.test(mime)) throw `Balas vn/audio yang ingin diubah dengan caption *${usedPrefix + command}*`
-        let audio = await q.download()
+        let audio = await q.download?.()
         if (!audio) throw 'Can\'t download audio!'
         let set
         if (/bass/.test(command)) set = '-af equalizer=f=94:width_type=o:width=2:g=30'
@@ -24,15 +24,15 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         if (/tupai|squirrel|chipmunk/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
         if (/vibra/.test(command)) set = '-filter_complex "vibrato=f=15"'
         let ran = (new Date * 1) + '.mp3'
-        let media = path.join(__dirname, '../tmp/' + ran)
+        let media = join(__dirname, '../tmp/' + ran)
         let filename = media + '.mp3'
-        await fs.promises.writeFile(media, audio)
+        await promises.writeFile(media, audio)
         exec(`ffmpeg -i ${media} ${set} ${filename}`, async (err) => {
-            await fs.promises.unlink(media)
+            await promises.unlink(media)
             if (err) return Promise.reject( `_*Error!*_`)
-            let buff = await fs.promises.readFile(filename)
+            let buff = await promises.readFile(filename)
             conn.sendFile(m.chat, buff, ran, null, m, /vn/.test(args[0]), { quoted: m, mimetype: 'audio/mp4' })
-            await fs.promises.unlink(filename)
+            await promises.unlink(filename)
         })
     } catch (e) {
         throw e
