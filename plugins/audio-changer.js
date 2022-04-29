@@ -24,7 +24,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         if (/tupai|squirrel|chipmunk/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
         if (/vibra/.test(command)) set = '-filter_complex "vibrato=f=15"'
         let ran = (new Date * 1) + '.mp3'
-        let media = join(__dirname, '../tmp/' + ran)
+        let media = '../tmp/' + ran
         let filename = media + '.mp3'
         await promises.writeFile(media, audio)
         exec(`ffmpeg -i ${media} ${set} ${filename}`, async (err) => {
