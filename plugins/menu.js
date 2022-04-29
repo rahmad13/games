@@ -36,6 +36,7 @@ Hai, *%name!* Im *%me*
 *Waktu:* %time
 *Bot Online:* %uptime (%muptime)
 *Register:* %totalreg
+*Fitur:* %totalfeatures command
 
 📌 This bot is still in beta, if you find an error in the command bot, please report the owner. Thank you
 %readmore
@@ -53,6 +54,9 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     let { exp, limit, level, role } = global.db.data.users[m.sender]
     let { min, xp, max } = xpRange(level, global.multiplier)
     let name = await conn.getName(m.sender)
+    let totalfeatures = Object.values(global.plugins).filter(
+    (v) => v.help && v.tags
+  ).length;
     let d = new Date(new Date + 3600000)
     let locale = 'id'
     // d.getTimeZoneOffset()
@@ -139,7 +143,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
       totalexp: exp,
       xp4levelup: max - exp,
       github: _package.homepage ? _package.homepage.url || _package.homepage : '[unknown github url]',
-      level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
+      level, totalfeatures, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
