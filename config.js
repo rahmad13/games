@@ -43,6 +43,7 @@ global.multiplier = 69 // The higher, The harder levelup
 global.wait = 'Process...'
 global.render = 'wait render'
 global.webs = 'https://rizxyu.github.io/sxzyweb/'
+global.logo = ""
 //Rpg
 global.rpg = {
   emoticon(string) {
