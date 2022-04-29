@@ -8,7 +8,7 @@ conn.sendHydrated(m.chat, `
 │ • Ovo [082328303332]
 │ • Paypal [rizkynursanto48@gmail.com]
 │ • Dana [082328303332]
-│ • Saweria []
+│ • Saweria [https://saweria.co/sxzy]
 ╰────
 
 Seiklasnya aja:>
