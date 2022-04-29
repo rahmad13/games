@@ -13,6 +13,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         if (!args[1]) throw 'angka nya mana'
         let set
         if (/bass/.test(command)) set = `-af equalizer=f=${args[0]}:width_type=o:width=2:g=${args[1]}`
+        if (/volume/.test(command)) set = `-af volume=${args[0]} -vcodec copy`
         if (/blown/.test(command)) set = '-af acrusher=.1:1:64:0:log'
         if (/deep/.test(command)) set = '-af atempo=4/4,asetrate=44500*2/3'
         if (/earrape/.test(command)) set = '-af volume=12'
@@ -41,8 +42,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         throw e
     }
 }
-handler.help = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai', 'vibra'].map(v => v + ' [vn]')
+handler.help = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai', 'vibra', 'volume'].map(v => v + ' [vn]')
 handler.tags = ['audio']
-handler.command = /^(bass|blown|deep|earrape|fas?t|nightcore|reverse|robot|slow|smooth|tupai|squirrel|chipmunk|vibra)$/i
+handler.command = /^(bass|blown|deep|earrape|fas?t|nightcore|reverse|robot|slow|smooth|tupai|squirrel|chipmunk|vibra|volume)$/i
 
 export default handler
