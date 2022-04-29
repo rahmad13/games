@@ -32,6 +32,7 @@ let tags = {
 const defaultMenu = {
   before: `
 Hai, *%name!* Im *%me*
+
 *Tanggal:* %week, %date
 *Waktu:* %time
 *Bot Online:* %uptime (%muptime)
@@ -40,7 +41,7 @@ Hai, *%name!* Im *%me*
 
 📌 This bot is still in beta, if you find an error in the command bot, please report the owner. Thank you
 %readmore
-Support me: https://saweria.co/sxzy
+Support me: https://www.saweria.co/sxzy
 `.trimStart(),
   header: '_*%category*_',
   body: ' › %cmd %islimit %isPremium',
