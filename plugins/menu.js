@@ -32,16 +32,16 @@ let tags = {
 const defaultMenu = {
   before: `
 Hai, *%name!* Im *%me*
-📅 Tanggal: *%week, %date*
-🕰️ Waktu: *%time*
-📈 Bot Online: *%uptime (%muptime)*
-📊 Register: %totalreg
+*Tanggal:* %week, %date
+*Waktu:* %time
+*Bot Online:* %uptime (%muptime)
+*Register:* %totalreg
 
 📌 This bot is still in beta, if you find an error in the command bot, please report the owner. Thank you
 %readmore
-Support me: saweria.co/sxzy
+Support me: https://saweria.co/sxzy
 `.trimStart(),
-  header: '*👾%category*',
+  header: '_*%category*_',
   body: ' › %cmd %islimit %isPremium',
   footer: '\n',
   after: `
