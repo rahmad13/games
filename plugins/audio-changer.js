@@ -9,8 +9,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         if (!/audio/.test(mime)) throw `Balas vn/audio yang ingin diubah dengan caption *${usedPrefix + command}*`
         let audio = await q.download?.()
         if (!audio) throw 'Can\'t download audio!'
+        if (!args[0]) throw 'angkanya mana contoh: reply .bass 1 10'
+        if (!args[1]) throw 'angka nya mana'
         let set
-        if (/bass/.test(command)) set = '-af equalizer=f=94:width_type=o:width=2:g=30'
+        if (/bass/.test(command)) set = `-af equalizer=f=${args[0]}:width_type=o:width=2:g=${args[1]}`
         if (/blown/.test(command)) set = '-af acrusher=.1:1:64:0:log'
         if (/deep/.test(command)) set = '-af atempo=4/4,asetrate=44500*2/3'
         if (/earrape/.test(command)) set = '-af volume=12'
@@ -19,7 +21,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         if (/nightcore/.test(command)) set = '-filter:a atempo=1.06,asetrate=44100*1.25'
         if (/reverse/.test(command)) set = '-filter_complex "areverse"'
         if (/robot/.test(command)) set = '-filter_complex "afftfilt=real=\'hypot(re,im)*sin(0)\':imag=\'hypot(re,im)*cos(0)\':win_size=512:overlap=0.75"'
-        if (/slow/.test(command)) set = '-filter:a "atempo=0.7,asetrate=44100"'
+        if (/slow/.test(command)) set = `-filter:a "atempo=1.0,asetrate=${args[0]}"`
         if (/smooth/.test(command)) set = '-filter:v "minterpolate=\'mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=120\'"'
         if (/tupai|squirrel|chipmunk/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
         if (/vibra/.test(command)) set = '-filter_complex "vibrato=f=15"'
@@ -31,6 +33,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
             await promises.unlink(media)
             if (err) return Promise.reject( `_*Error!*_`)
             let buff = await promises.readFile(filename)
+            m.reply(wait)
             conn.sendFile(m.chat, buff, ran, null, m, /vn/.test(args[0]), { quoted: m, mimetype: 'audio/mp4' })
             await promises.unlink(filename)
         })
