@@ -1,7 +1,7 @@
 import { promises } from 'fs'
-import request from 'request'
+import { request } from 'request'
 import fetch from 'node-fetch'
-import topdf from 'image-to-pdf'
+import { topdf } from 'image-to-pdf'
 import { getDoujin } from 'nhentai-node-api'
 
 
@@ -44,7 +44,7 @@ await m.reply('Loading...')
 	if (size < 45000000) {
 		m.reply('Uploading...')
 		let thumbnail = await (await fetch(doujin.cover)).buffer()
-		await conn.sendFile(m.chat, promises.readFileSync(`./nhentai/${title}.pdf`), `${title}.pdf`, '', m, false, { asDocument: true, thumbnail: thumbnail })
+		await conn.sendFile(m.chat, promises.readFileSync(`./nhentai/${title}.pdf`), `${title}.pdf`, '', m, false, { asDocument: true })
 		.then(() => promises.unlinkSync(`./nhentai/${title}.pdf`))
 	} else {
 		m.reply('Uploading to anonfiles because file size to large')
