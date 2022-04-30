@@ -16,7 +16,7 @@ if (!args[0]) throw `example: ${usedPrefix +command} 😎`
          conn.relayMessage(m.chat, {
             reactionMessage: react
         }, { messageId: baileys.generateMessageID() })
-m.reply(m 
+m.reply(m.quoted.id)
 m.reply('done')
 }
 
