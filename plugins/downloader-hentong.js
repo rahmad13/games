@@ -1,7 +1,7 @@
 import { promises } from 'fs'
 import request from 'request'
 import fetch from 'node-fetch'
-import { topdf } from 'image-to-pdf'
+import topdf from 'image-to-pdf'
 import { getDoujin } from 'nhentai-node-api'
 
 
