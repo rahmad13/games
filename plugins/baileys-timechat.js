@@ -5,7 +5,7 @@ if (!args[1]) throw `.setchattime 62823283033324 2022-04-30 15:30 hola`
 if (!args[2]) throw `.setchattime 62823283033324 2022-04-30 15:30 hola`
 if (!args[3]) throw `.setchattime 62823283033324 2022-04-30 15:30 hola`
 
-let obj = { tanggal: `${args[1]}`, jam: `${args[2]` }
+let obj = { tanggal: `${args[1]}`, jam: `${args[2]}` }
 
 let date1 = + new Date()
 
