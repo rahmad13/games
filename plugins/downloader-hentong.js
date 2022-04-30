@@ -2,7 +2,7 @@ import { promises } from 'fs'
 import request from 'request'
 import fetch from 'node-fetch'
 import topdf from 'image-to-pdf'
-import nhentai from 'nhentai-node-api'
+import { getDoujin } from 'nhentai-node-api'
 
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
@@ -11,9 +11,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 	if (isNaN(args[0])) return m.reply('Pake angka')
    	
         await m.reply('Loading...')
+        let doujin = await getDoujin(args[0])
 	let count = 0
 	let ResultPdf = []
-	let doujin = await nhentai.getDoujin(args[0])
 	let title = doujin.title.default
 	let details = doujin.details
 	let parodies = details.parodies.map(v => v.name)
