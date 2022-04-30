@@ -9,11 +9,14 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         if (!/audio/.test(mime)) throw `Balas vn/audio yang ingin diubah dengan caption *${usedPrefix + command}*`
         let audio = await q.download?.()
         if (!audio) throw 'Can\'t download audio!'
-        if (!args[0]) throw 'angkanya mana contoh: reply .bass 1 10'
-        if (!args[1]) throw 'angka nya mana'
+        if (!args[0]) throw 'angkanya mana'
+        if (isNaN(args[0])) return m.reply('Pake angka')
+        if (!args[1]) throw 'angkanya mana'
+        if (isNaN(args[1])) return m.reply('Pake angka')
         let set
         if (/bass/.test(command)) set = `-af equalizer=f=${args[0]}:width_type=o:width=2:g=${args[1]}`
         if (/volume/.test(command)) set = `-af volume=${args[0]} -vcodec copy`
+        if (/cut/.test(command)) set = `-ss ${args[1]} -to ${args[1]}`
         if (/blown/.test(command)) set = '-af acrusher=.1:1:64:0:log'
         if (/deep/.test(command)) set = '-af atempo=4/4,asetrate=44500*2/3'
         if (/earrape/.test(command)) set = '-af volume=12'
@@ -42,8 +45,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         throw e
     }
 }
-handler.help = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai', 'vibra', 'volume'].map(v => v + ' [vn]')
+handler.help = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai', 'vibra', 'volume', 'cut'].map(v => v + ' [vn]')
 handler.tags = ['audio']
-handler.command = /^(bass|blown|deep|earrape|fas?t|nightcore|reverse|robot|slow|smooth|tupai|squirrel|chipmunk|vibra|volume)$/i
+handler.command = /^(bass|blown|deep|earrape|fas?t|nightcore|reverse|robot|slow|smooth|tupai|squirrel|chipmunk|vibra|volume|cut)$/i
 
 export default handler
