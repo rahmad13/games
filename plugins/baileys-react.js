@@ -5,7 +5,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 if (!args[0]) throw `example: ${usedPrefix +command} 😎`
         const react = new baileys.proto.ReactionMessage.create({})
 
-        react.key = m.quoted.id
+        react.key = m.key
         react.text = args[0]
         react.senderTimestampMs = {
             low: 12345678,
@@ -16,7 +16,7 @@ if (!args[0]) throw `example: ${usedPrefix +command} 😎`
          conn.relayMessage(m.chat, {
             reactionMessage: react
         }, { messageId: baileys.generateMessageID() })
-m.reply(m.quoted.id)
+m.reply(m.key.id)
 m.reply('done')
 }
 
