@@ -10,14 +10,13 @@ try {
         if (!/audio/.test(mime)) throw `Balas vn/audio yang ingin diubah dengan caption *${usedPrefix + command}*`
         let audio = await q.download?.()
         if (!audio) throw 'Can\'t download audio!'
-        if (!args[0]) throw 'angkanya mana contoh: reply .bass 1 10'
-        if (!args[1]) throw 'angka nya mana'
-      
-       exec(`ffmpeg -ss ${args[0]} -i ${media} -t ${args[1]} -c copy ${filename}`, async (err) => {
+        if (!args[0]) throw 'angkanya mana contoh: reply .cut 1 10'
+        if (!args[1]) throw 'detik mana'
         let ran = (new Date * 1) + '.mp3'
         let media = '../tmp/' + ran
         let filename = media + '.mp3'
         await promises.writeFile(media, audio)
+       exec(`ffmpeg -ss ${args[0]} -i ${media} -t ${args[1]} -c copy ${filename}`, async (err) => {
           await promises.unlink(media)
             if (err) return Promise.reject( `_*Error!*_`)
             let buff = await promises.readFile(filename)
