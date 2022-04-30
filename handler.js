@@ -756,7 +756,7 @@ global.dfail = (type, m, conn) => {
         unreg: '*AKSES DITOLAK*\nSilahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*',
         restrict: 'Fitur ini di *disable*!'
     }[type]
-    if (msg) return conn.sendHydrated(m.chat, msg, author, `${logo}`, `${webs}`, "Website", null, null, [["Owner", ".donasi"]], m)
+    if (msg) return conn.sendHydrated2(m.chat, msg, author, `${logo}`, `${webs}`, "Website", `${gcwangsaf}`, "GROUP WHATSAPP", [["Owner", ".donasi"]], m)
 }
 
 let file = global.__filename(import.meta.url, true)
