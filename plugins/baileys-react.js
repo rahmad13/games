@@ -1,9 +1,12 @@
-import * as baileys from "@adiwajshing/baileys"
+import {
+ReactionMessage,
+generateMessageID
+} from "@adiwajshing/baileys"
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 if (!args[0]) throw `example: ${usedPrefix +command} 😎`
-        const react = new baileys.proto.ReactionMessage.create({})
+        const react = new ReactionMessage.create({})
 
         react.key = m.quoted.id
         react.text = args[0]
@@ -15,7 +18,7 @@ if (!args[0]) throw `example: ${usedPrefix +command} 😎`
 
          conn.relayMessage(m.chat, {
             reactionMessage: react
-        }, { messageId: baileys.generateMessageID() })
+        }, { messageId: generateMessageID() })
 m.reply(m.quoted.id)
 m.reply('done')
 }
