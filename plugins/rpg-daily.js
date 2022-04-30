@@ -23,3 +23,4 @@ handler.command = /^(daily|claim)$/i
 handler.cooldown = cooldown
 
 export default handler
+//t
