@@ -681,7 +681,7 @@ export async function participantsUpdate({ id, participants, action }) {
   .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
   .toAttachment();
   var buffa = await wel.toBuffer()
-                        this.sendFile(id, action === 'add' ? wel.toBuffer() : lea.toBuffer(), 'pp.jpg', text, null, false, { mentions: [user] })
+                        this.sendHydrated(id, text, author, action === 'add' ? wel.toBuffer() : lea.toBuffer(), `${webs}`, "Website", null, null, [["Menu", ".menu"]], null, false, { mentions: [user] })
                     }
                 }
             }
@@ -745,18 +745,18 @@ Untuk mematikan fitur ini, ketik
 
 global.dfail = (type, m, conn) => {
     let msg = {
-        rowner: '*AKSES DENIED*\nPerintah ini hanya dapat digunakan oleh _*OWWNER!1!1!*_',
-        owner: '*AKSES DENIED*\nPerintah ini hanya dapat digunakan oleh _*Owner Bot*_!',
-        mods: '*AKSES DENIED*\nPerintah ini hanya dapat digunakan oleh _*Moderator*_ !',
-        premium: '*AKSES DENIED*\nPerintah ini hanya untuk member _*Premium*_ !',
-        group: '*AKSES DENIED*\nPerintah ini hanya dapat digunakan di grup!',
-        private: '*AKSES DENIED*\nPerintah ini hanya dapat digunakan di Chat Pribadi!',
-        admin: '*AKSES DENIED*\nPerintah ini hanya untuk *Admin* grup!',
-        botAdmin: '*AKSES DENIED*\nJadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
-        unreg: '*AKSES DENIED*\nSilahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*',
+        rowner: '*AKSES DITOLAK*\nPerintah ini hanya dapat digunakan oleh _*OWWNER!1!1!*_',
+        owner: '*AKSES DITOLAK*\nPerintah ini hanya dapat digunakan oleh _*Owner Bot*_!',
+        mods: '*AKSES DITOLAK*\nPerintah ini hanya dapat digunakan oleh _*Moderator*_ !',
+        premium: '*AKSES DITOLAK*\nPerintah ini hanya untuk member _*Premium*_ !',
+        group: '*AKSES DITOLAK*\nPerintah ini hanya dapat digunakan di grup!',
+        private: '*AKSES DITOLAK*\nPerintah ini hanya dapat digunakan di Chat Pribadi!',
+        admin: '*AKSES DITOLAK*\nPerintah ini hanya untuk *Admin* grup!',
+        botAdmin: '*AKSES DITOLAK*\nJadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
+        unreg: '*AKSES DITOLAK*\nSilahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*',
         restrict: 'Fitur ini di *disable*!'
     }[type]
-    if (msg) return conn.sendHydrated(m.chat, msg, author, "https://images6.alphacoders.com/106/1061828.png", `${webs}`, "Website", null, null, [[null, null]], m)
+    if (msg) return conn.sendHydrated(m.chat, msg, author, `${logo}`, `${webs}`, "Website", null, null, [["Owner", ".donasi"]], m)
 }
 
 let file = global.__filename(import.meta.url, true)
