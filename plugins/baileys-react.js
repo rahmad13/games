@@ -21,7 +21,7 @@ m.reply('done')
 }
 
 handler.help = ['react'].map(v => v + ' <emoji>')
-handler.tags = ['baileys']
+handler.tags = ['Baileys']
 handler.command = /^(react|reac|reak)$/i
 
 export default handler
