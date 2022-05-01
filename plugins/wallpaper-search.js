@@ -16,7 +16,7 @@ if (!text) return m.reply('Nyari apa?')
   }
 
 handler.help = ['wallq <nama>', 'walls <search>']
-handler.tags = ['wallpaper']
+handler.tags = ['Wallpaper']
 
 handler.command = /^wall(q|(s)?)$/i
 
