@@ -2,8 +2,8 @@ export async function before(m, { isAdmin, isBotAdmin }) {
  let chat = db.data.chats[m.chat]
  if (m.isBaileys && m.fromMe)
         return !0
- if (chat.isBanned) return 0
- if (!chat.getmsg) return 
+ if (chat.isBanned) return !0
+ if (!chat.getmsg) return !1
  if (!m.isGroup) return !1
     let msgs = db.data.msgs
     if (!(m.text in msgs)) return
