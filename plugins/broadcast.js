@@ -7,7 +7,7 @@ let handler = async (m, { conn, text }) => {
   conn.reply(m.chat, `_Mengirim pesan broadcast ke ${chats.length} chat_`, m)
   for (let id of chats) {
   await delay(1500)
-  await conn.sendHydrated(id, "*「"+ author + " All Chat Broadcast 」* \n\n" + text, author, `${logo}`, `${webs}`, "Website", `${gcwangsaf}`, 'GROUP WHATSAPP', ['Menu', '.menu']], m)
+  await conn.sendHydrated(id, "*「"+ author + " All Chat Broadcast 」* \n\n" + text, author, `${logo}`, `${webs}`, "Website", `${gcwangsaf}`, 'GROUP WHATSAPP', [['Menu', '.menu']], m)
   }
   m.reply('Selesai Broadcast All Chat :)')
 }
