@@ -5,7 +5,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 const { meta, hd, sd} = await savefrom(args[0]).catch(async _ => await aiovideodl(args[0]))
 
 const done = hd.url || sd.url
- conn.sendFile(m.chat, done, `savefrom.mp4`, ` *👤 Profil:* ${meta.title}
+ conn.sendFile(m.chat, done, `savefrom.mp4`, ` *🏷️Title:* ${meta.title}
 *⌛ durasi:* ${meta.duration}
 🔗 *Url:* ${done}`, m)
 
