@@ -36,15 +36,11 @@ let handler = async (m, { conn, usedPrefix, text }) => {
   }
 
   if (global.db.data.users[user].pasangan == "") {
-    conn.reply(m.chat, `${orang} tidak memiliki pasangan dan tidak sedang menembak siapapun\n\n*Ketik .jadian @user untuk menembak seseorang*`, m)
+    m.reply(`${orang} tidak memiliki pasangan dan tidak sedang menembak siapapun\n\n*Ketik .jadian @user untuk menembak seseorang*`)
   }else if (global.db.data.users[global.db.data.users[user].pasangan].pasangan != user){
-    conn.reply(m.chat, `${orang} sedang menunggu jawaban dari @${global.db.data.users[user].pasangan.split('@')[0]} karena sedang tidak diterima atau di tolak\n\nKetik *${usedPrefix}ikhlasin* untuk mengikhlaskan!`, m,{contextInfo: {
-      mentionedJid: [global.db.data.users[user].pasangan]
-    }})
+    m.reply(`${orang} sedang menunggu jawaban dari @${global.db.data.users[user].pasangan.split('@')[0]} karena sedang tidak diterima atau di tolak\n\nKetik *${usedPrefix}ikhlasin* untuk mengikhlaskan!`)
   }else {
-    conn.reply(m.chat, `${orang} sedang menjalani hubungan dengan @${global.db.data.users[user].pasangan.split('@')[0]} 💓💓💓`, m,{contextInfo: {
-      mentionedJid: [global.db.data.users[user].pasangan]
-    }})
+    m.reply(`${orang} sedang menjalani hubungan dengan @${global.db.data.users[user].pasangan.split('@')[0]} 💓💓💓`)
   }
 }
 handler.help = ['cekpacar']
