@@ -21,7 +21,7 @@ let handler = async (m, { conn, text, participants, groupMetadata }) => {
 			var user = number + '@s.whatsapp.net'
 		} else if(m.quoted.sender) {
 			var user = m.quoted.sender
-		} else if(m.mentionedJid) {
+		} else if(mentions) {
   		  var user = number + '@s.whatsapp.net'
 			}  
 		} catch (e) {
