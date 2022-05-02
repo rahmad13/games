@@ -12,6 +12,6 @@ m.reply(cpt)
 }
 handler.help = ['cekpacar']
 handler.tags = ['jadian']
-handler.command = /^(cekpacar)$/i
+handler.command = /^(cek(pacar)?)$/i
 handler.fail = null
-module.exports = handler
+export default handler
