@@ -14,17 +14,17 @@ let handler = async (m, { conn, usedPrefix, text }) => {
   if(number.length > 15 || (number.length < 9 && number.length > 0)) return conn.reply(m.chat, `Maaf, Nomor yang anda masukan salah!`, m)
 
   if (!text && !m.quoted){
-    user = m.sender
-    orang = "Kamu"
+    var user = m.sender
+    var orang = "Kamu"
   }else if(text) {
     var user = number + '@s.whatsapp.net'
-    orang = "Orang yang kamu tag"
+    var orang = "Orang yang kamu tag"
   } else if(m.quoted.sender) {
     var user = m.quoted.sender
-    orang = "Orang yang kamu balas"
+    var orang = "Orang yang kamu balas"
   } else if(m.mentionedJid) {
     var user = number + '@s.whatsapp.net'
-    orang = "Orang yang kamu tag"
+    var orang = "Orang yang kamu tag"
   }
 
   if (typeof global.db.data.users[user] == "undefined"){
