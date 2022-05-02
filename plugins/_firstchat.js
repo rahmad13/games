@@ -1,3 +1,5 @@
+/**
+
 export async function all(m) {
 if (m.isBaileys && m.fromMe && m.isGroup) return !0
 let user = global.db.data.users[m.sender]
@@ -8,3 +10,4 @@ Hai, ${user.banned ? 'kamu dibanned' : `Ada yang bisa ${this.user.name} bantu?`}
 `.trim(), author, [[user.banned ? 'Pemilik Bot' : 'Menu', user.banned ? ',owner' : ',?']], m)
     user.pc = new Date * 1
 }
+**/
