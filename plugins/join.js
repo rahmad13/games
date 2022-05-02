@@ -10,7 +10,8 @@ let handler = async (m, { conn, usedPrefix, text, isOwner }) => {
     if (!chats) chats = global.db.data.chats[res] = {}
     if (expired) chats.expired = +new Date() + expired * 1000 * 60 * 60 * 24
    })
-   conn.sendButton(res, `${conn.getName(conn.user.jid)} Adalah Bot whatsapp Yang dibangun dengan NodeJs, diinvit oleh @${m.sender.split`@`[0]}`, author, [['Menu','.menu'], ['Donasi','.donasi']], m)
+   let caption = `${conn.getName(conn.user.jid)} Adalah Bot whatsapp Yang dibangun dengan NodeJs, diinvit oleh @${m.sender.split`@`[0]}. Ketik /menu Untuk melihat daftar fitur`
+   conn.sendButton(res, caption, author, [['Menu','.menu'], ['Donasi','.donasi']], m, {mentions: conn.parseMention(caption)})
 }
 handler.help = ['join <chat.whatsapp.com>']
 handler.tags = ['premium']
