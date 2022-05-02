@@ -688,7 +688,7 @@ export async function participantsUpdate({ id, participants, action }) {
   .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
   .toAttachment();
   var buffa = await wel.toBuffer()
-                        this.sendHydrated(id, text, author, action === 'add' ? wel.toBuffer() : lea.toBuffer(), `${webs}`, "Website", null, null, [["Menu", ".menu"]], null, false, { mentions: [user] })
+                        this.sendHydrated(id, text, author, action === 'add' ? wel.toBuffer() : lea.toBuffer(), webs, "Website", gcwangsaf, "GROUP WHATSAPP", [["Menu", ".menu"]], null, false, { mentions: this.parseMention(text) })
                     }
                 }
             }
