@@ -33,7 +33,7 @@ let handler = async (m, { conn, usedPrefix, text, participants, groupMetadata}) 
       m.reply(`Kamu sudah berpacaran dengan @${global.db.data.users[m.sender].pasangan.split('@')[0]}\n\nSilahkan putus dulu (ketik .putus untuk memutuskan hubungan) untuk menembak @${user.split('@')[0]}\n\nBtw yang setia dikit banget!`)
     }else if(global.db.data.users[user].pasangan != ""){
       if (pacar == user){
-        if (m.sender == pacar && global.db.data.users[m.sender].pasangan == user) return m.reply(`Anda sudah berpacaran dengan ${spac.split('@')}`)
+        if (m.sender == pacar && global.db.data.users[m.sender].pasangan == user) return m.reply(`Anda sudah berpacaran dengan ${spac.split('@')[0]}`)
         m.reply(`Maaf, @${user.split('@')[0]} sudah berpacaran dengan @${pacar.split('@')[0]}\nSilahkan cari pasangan lain!`)
       }else{
         global.db.data.users[m.sender].pasangan = user
