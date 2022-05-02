@@ -28,12 +28,12 @@ let handler = async (m, { conn, usedPrefix, text, participants, groupMetadata}) 
 
     if (typeof global.db.data.users[user] == "undefined") return m.reply("_*Orang yang anda tag tidak terdaftar di dalam database.*_")
     var pacar = global.db.data.users[user].pasangan
-     
+    var spac = global.db.data.users[m.sender].pasangan
     if(global.db.data.users[m.sender].pasangan != "" && global.db.data.users[global.db.data.users[m.sender].pasangan].pasangan == m.sender && global.db.data.users[m.sender].pasangan != user){
       m.reply(`Kamu sudah berpacaran dengan @${global.db.data.users[m.sender].pasangan.split('@')[0]}\n\nSilahkan putus dulu (ketik .putus untuk memutuskan hubungan) untuk menembak @${user.split('@')[0]}\n\nBtw yang setia dikit banget!`,m)
     }else if(global.db.data.users[user].pasangan != ""){
       if (pacar == user){
-        if (m.sender == pacar && global.db.data.users[m.sender].pasangan == user) return m.reply(`Anda sudah berpacaran dengan @${beb.split('@')[0]}`,m)
+        if (m.sender == pacar && global.db.data.users[m.sender].pasangan == user) return m.reply(`Anda sudah berpacaran dengan @${spac.split('@')[0]}`,m)
         m.reply(`Maaf, @${user.split('@')[0]} sudah berpacaran dengan @${pacar.split('@')[0]}\nSilahkan cari pasangan lain!`,m)
       }else{
         global.db.data.users[m.sender].pasangan = user
