@@ -27,10 +27,10 @@ let handler = async (m, { conn, text, participants, groupMetadata }) => {
     if(user === conn.user.jid) return conn.reply(m.chat, `Tidak bisa berpacaran dengan saya t_t`, m)
     
     if(global.db.data.users[user].pasangan != m.sender){
-      conn.reply(m.chat, `Maaf @${user.split('@')[0]} tidak sedang menembak anda`, m, { contextInfo: { mentionedJid}})
+      conn.reply(m.chat, `Maaf @${user.split('@')[0]} tidak sedang menembak anda`, m, { contextInfo: [user]})
     }else{
       global.db.data.users[m.sender].pasangan = user
-      conn.reply(m.chat, `Selamat anda resmi berpacaran dengan @${user.split('@')[0]}\n\nSemoga langgeng dan bahagia selalu @${user.split('@')[0]} 💓 @${m.sender.split('@')[0]} 🥳🥳🥳`,m, { contextInfo: { mentionedJid}})
+      conn.reply(m.chat, `Selamat anda resmi berpacaran dengan @${user.split('@')[0]}\n\nSemoga langgeng dan bahagia selalu @${user.split('@')[0]} 💓 @${m.sender.split('@')[0]} 🥳🥳🥳`,m, { contextInfo: [user]})
     }
 	}	
 }
