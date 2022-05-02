@@ -30,21 +30,21 @@ let handler = async (m, { conn, usedPrefix, text, participants, groupMetadata}) 
     var pacar = global.db.data.users[user].pasangan
     var spac = global.db.data.users[m.sender].pasangan
     if(global.db.data.users[m.sender].pasangan != "" && global.db.data.users[global.db.data.users[m.sender].pasangan].pasangan == m.sender && global.db.data.users[m.sender].pasangan != user){
-      m.reply(`Kamu sudah berpacaran dengan @${global.db.data.users[m.sender].pasangan.split('@')[0]}\n\nSilahkan putus dulu (ketik .putus untuk memutuskan hubungan) untuk menembak @${user.split('@')[0]}\n\nBtw yang setia dikit banget!`)
+      conn.reply(m.chat, `Kamu sudah berpacaran dengan @${global.db.data.users[m.sender].pasangan.split('@')[0]}\n\nSilahkan putus dulu (ketik .putus untuk memutuskan hubungan) untuk menembak @${user.split('@')[0]}\n\nBtw yang setia dikit banget!`, m , { contextInfo: { mentionedJid: [user, global.db.data.users[m.sender].pasangan]}})
     }else if(global.db.data.users[user].pasangan != ""){
       if (pacar == user){
-        if (m.sender == pacar && global.db.data.users[m.sender].pasangan == user) return m.reply(`Anda sudah berpacaran dengan ${spac.split('@')[0]}`)
-        m.reply(`Maaf, @${user.split('@')[0]} sudah berpacaran dengan @${pacar.split('@')[0]}\nSilahkan cari pasangan lain!`)
+        if (m.sender == pacar && global.db.data.users[m.sender].pasangan == user) return conn.reply(m.chat, `Anda sudah berpacaran dengan ${spac.split('@')[0]}`, m , { contextInfo: { mentionedJid: [spec]}})
+        conn.reply(m.chat, `Maaf, @${user.split('@')[0]} sudah berpacaran dengan @${pacar.split('@')[0]}\nSilahkan cari pasangan lain!`, m , { contextInfo: { mentionedJid: [user, pacar]}})
       }else{
         global.db.data.users[m.sender].pasangan = user
-        m.reply(`Anda baru saja mengajak @${user.split('@')[0]} berpacaran\n\nSilahkan menunggu jawaban darinya!\n\nKetik *${usedPrefix}terima @user* untuk menerima\n*${usedPrefix}tolak @user untuk menolak*`)
+        conn.reply(m.chat, `Anda baru saja mengajak @${user.split('@')[0]} berpacaran\n\nSilahkan menunggu jawaban darinya!\n\nKetik *${usedPrefix}terima @user* untuk menerima\n*${usedPrefix}tolak @user untuk menolak*`, m , { contextInfo: { mentionedJid: [user]}})
       }
     }else if (global.db.data.users[user].pasangan == m.sender){
       global.db.data.users[m.sender].pasangan = user
-      m.reply(`Selamat anda resmi berpacaran dengan @${user.split('@')[0]}\n\nSemoga langgeng dan bahagia selalu 🥳🥳🥳`)
+      conn.reply(m.chat, `Selamat anda resmi berpacaran dengan @${user.split('@')[0]}\n\nSemoga langgeng dan bahagia selalu 🥳🥳🥳`, m , { contextInfo: { mentionedJid: [user]}})
     }else {
       global.db.data.users[m.sender].pasangan = user
-      m.reply(`Kamu baru saja mengajak @${user.split('@')[0]} berpacaran\n\nSilahkan menunggu jawaban darinya!\n\nKetik *${usedPrefix}terima @user* untuk menerima\n*${usedPrefix}tolak @user untuk menolak*`)
+      conn.reply(m.chat, `Kamu baru saja mengajak @${user.split('@')[0]} berpacaran\n\nSilahkan menunggu jawaban darinya!\n\nKetik *${usedPrefix}terima @user* untuk menerima\n*${usedPrefix}tolak @user untuk menolak*`, m , { contextInfo: { mentionedJid: [user]}})
     }
 	}	
 }
