@@ -180,8 +180,8 @@ export async function handler(chatUpdate) {
                     user.pc = 0
                  if (!isNumber(user.job))
                     user.job = 0
-                if (!isNumber(user.jadian))
-                    user.jadian = ''
+                if (!isNumber(user.pasangan))
+                    user.pasangan = ''
             } else
                 global.db.data.users[m.sender] = {
                     exp: 0,
@@ -255,7 +255,7 @@ export async function handler(chatUpdate) {
                     gamemines: false,
                     pc: false,
                     job: 0,
-                    jadian: '',
+                    pasangan: '',
                 }
             let chat = global.db.data.chats[m.chat]
             if (typeof chat !== 'object')
@@ -688,7 +688,7 @@ export async function participantsUpdate({ id, participants, action }) {
   .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
   .toAttachment();
   var buffa = await wel.toBuffer()
-                        this.sendHydrated(id, text, author, action === 'add' ? wel.toBuffer() : lea.toBuffer(), webs, "Website", gcwangsaf, "GROUP WHATSAPP", [["Menu", ".menu"]], null, false, { mentions: this.parseMention(text) })
+                        this.sendHydrated2(id, text, author, action === 'add' ? wel.toBuffer() : lea.toBuffer(), webs, "Website", gcwangsaf, "GROUP WHATSAPP", [["Menu", ".menu"]], null, false, { mentions: this.parseMention(text) })
                     }
                 }
             }
