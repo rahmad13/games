@@ -1,9 +1,4 @@
-/*//////////////////////////////////
-
-Cretor : Hairul Lana Recode: Rizxyu(SXZY)
-https://github.com/hairullana 
-
-/*////////////////////////////////*/
+import { areJidsSameUser } from '@adiwajshing/baileys'
 
 let handler = async (m, { conn, text, participants, groupMetadata }) => {
 	if(isNaN(text)) {
@@ -21,12 +16,12 @@ let handler = async (m, { conn, text, participants, groupMetadata }) => {
 			var user = number + '@s.whatsapp.net'
 		} else if(m.quoted.sender) {
 			var user = m.quoted.sender
-		} else if(mentions) {
+		} else if(m.mentionedJid) {
   		  var user = number + '@s.whatsapp.net'
 			}  
 		} catch (e) {
   } finally {
-    let users = m.isGroup ? participants.find(u => u.jid == user) : {}
+    let users = m.isGroup ? participants.find(v => areJidsSameUser(v.jid, user)) : {}
     if(!users) return conn.reply(m.chat, `Target atau Nomor tidak ditemukan, mungkin sudah keluar atau bukan anggota grup ini.`, m)
     if(user === m.sender) return conn.reply(m.chat, `Tidak bisa berpacaran dengan diri sendiri!`, m)
     if(user === conn.user.jid) return conn.reply(m.chat, `Tidak bisa berpacaran dengan saya t_t`, m)
