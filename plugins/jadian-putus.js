@@ -1,19 +1,11 @@
-/*//////////////////////////////////
-
-Cretor : Hairul Lana
-https://github.com/hairullana 
-
-/*////////////////////////////////*/
 
 let handler = async (m, { conn }) => {
-  ayg = global.db.data.users[m.sender]
+  var ayg = global.db.data.users[m.sender]
+  var beb = global.db.data.users[global.db.data.users[m.sender].pasangan]
 
   if(ayg.pasangan == ""){
     return conn.reply(m.chat,`Anda tidak memiliki pasangan.`,m)
   }
-  
-  beb = global.db.data.users[global.db.data.users[m.sender].pasangan]
-
   if (typeof beb == "undefined"){
     conn.reply(m.chat,`Berhasil putus hubungan dengan @${global.db.data.users[m.sender].pasangan.split('@')[0]}`,m,{contextInfo: {
       mentionedJid: [global.db.data.users[m.sender].pasangan]
