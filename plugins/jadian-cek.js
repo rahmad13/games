@@ -7,7 +7,7 @@ let handler = async (m, { conn, usedPrefix, text }) => {
      }
    if pacar = who.pasangan
   if (pacar == "") throw `belum punya pasangan\n\nKetik ${usedPrefix}tembak @tag`
-    let cpt = `*${conn.getName(who)}* (${who.split('@'[0]}) Berpacaran dengan ${pacar.split("@")[0]}\n\nIngin putus Ketik ${usedPrefix}putus @tag`
+    let cpt = `*${conn.getName(who)}* (${who.split('@')[0]}) Berpacaran dengan ${pacar.split("@")[0]}\n\nIngin putus Ketik ${usedPrefix}putus @tag`
 m.reply(cpt)
 }
 handler.help = ['cekpacar']
