@@ -1,7 +1,7 @@
 import Brainly from 'brainly-scraper-v2'
-import brain from new Brainly('id')
 
 let handler = async function (m, { text, usedPrefix, command }) {
+  const brain = new Brainly('id')
   if (!text) throw `Pengunaan:\n${usedPrefix + command} <soal>\n\nContoh:\n${usedPrefix + command} apa itu javascript?`
   brain.search('id', text).then(res => {
     let json = JSON.parse(JSON.stringify(res))
