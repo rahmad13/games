@@ -1,7 +1,7 @@
 import EventEmitter from "events"
 import { Game, genRealMove } from "chess-node"
 import CIG from 'chess-image-generator-ts'
-import chess from "../lib/chess.js"
+import { parseBoard } from "../lib/chess.js"
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 
@@ -9,7 +9,7 @@ const games = new Map()
  const challenges = new Map()
  const ongoing = new Set()
         var Chess = new chess()
-        const { parseBoard } = Chess
+        
         
         const end = async(winner) => {
             var game = games.get(m.chat)
