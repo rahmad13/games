@@ -1,18 +1,14 @@
 let handler = async (m, { conn, command, usedPrefix }) => {
-conn.sendHydrated(m.chat, `
-╭─「 Donasi • Pulsa 」
-│ • Telkomsel [082328303332]
-╰────
+conn.sendHydrated(m.chat, ` ${conn.getName(m.sender)} Want Support Bot?
 
-╭─「 Donasi • Digital 」
-│ • Ovo [082328303332]
-│ • Paypal [rizkynursanto48@gmail.com]
-│ • Dana [082328303332]
-│ • Saweria [https://saweria.co/sxzy]
-╰────
+*PAYMENT ↓*
+_*Pulsa/pulse(Telkomsel):*_ ${pulsa}
+_*Dana/ovo:*_ ${dana}
+_*Paypal:*_ ${paypal}
+_*Saweria:*_ ${saweria}
 
-Seiklasnya aja:>
-`, author, `https://github.com/Rizxyu/games-wabot-md/raw/private/plugins/donasi.js`, `${webs}`, `Website`, null, null, [[null, null]], m)
+Setelah melakukan donasi kirim bukti pembayaran ke owner
+`, author, `https://github.com/Rizxyu/games-wabot-md/raw/private/plugins/donasi.js`, `${webs}`, `Website`, null, null, [['Owner', '.owner']], m)
 }
 handler.help = ['donasi']
 handler.tags = ['info']
