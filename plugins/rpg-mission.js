@@ -91,7 +91,7 @@ user.crystal += json.crystal
 handler.help = ['mission']
 handler.tags = ['rpg']
 handler.command = /^(m(isi)?(ission)?)$/i
-export defaulr handler
+export default handler
 
 function pickRandom(list) {
     return list[Math.floor(Math.random() * list.length)]
