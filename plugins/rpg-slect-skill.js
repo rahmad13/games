@@ -3,7 +3,7 @@
  github.com/Rizxyu
  Dont delete credit nigga
 ***/
-let handler = async (m, { conn, usedPrefix, text, participants, groupMetadata}) => {
+let handler = async (m, { conn, usedPrefix, text, command}) => {
 
 var user = global.db.data.users[m.sender]
 
