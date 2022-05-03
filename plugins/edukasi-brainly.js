@@ -1,5 +1,5 @@
 import Brainly from 'brainly-scraper-v2'
-const brain = new Brainly('id')
+import brain from new Brainly('id')
 
 let handler = async function (m, { text, usedPrefix, command }) {
   if (!text) throw `Pengunaan:\n${usedPrefix + command} <soal>\n\nContoh:\n${usedPrefix + command} apa itu javascript?`
