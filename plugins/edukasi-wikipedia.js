@@ -4,13 +4,13 @@ let handler = async (m, { text, usedPrefix, command }) => {
   let json = await wikipedia(text)
   m.reply(`
 *${json.title}*
-${json.img}
+_Gambar:_ ${json.img}
 
 ${json.articles}
 `.trim())
 }
 handler.help = ['wikipedia'].map(v => v + ' <apa>')
-handler.tags = ['internet']
+handler.tags = ['edukasi']
 handler.command = /^(wiki|wikipedia)$/i
 
 export default handler
