@@ -37,7 +37,7 @@ var misi = [
 "exp": "4837",
 "crystal": "7"
 }
-}
+
 ]
 
 //var =???
