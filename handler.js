@@ -186,7 +186,8 @@ export async function handler(chatUpdate) {
                     user.skill = ''
                  if (!isNumber(user.lastmisi))
                     user.lastmisi = 0
-
+                if (!isNumber(user.crystal))
+                    user.crystal = 0
             } else
                 global.db.data.users[m.sender] = {
                     exp: 0,
@@ -263,6 +264,7 @@ export async function handler(chatUpdate) {
                     pasangan: '',
                     skill: '',
                     lastmisi: 0,
+                    crystal: 0,
                 }
             let chat = global.db.data.chats[m.chat]
             if (typeof chat !== 'object')
