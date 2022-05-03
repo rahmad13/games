@@ -105,7 +105,7 @@ let handler = async (m, { conn }) => {
 Inventory *${conn.getName(m.sender)}*
 
 *🃏 Skill:*
-${skill ? '❌ Not Have skill' : skill}
+${skill ? skill : '❌ Not Have skill'}
 
 ${Object.keys(inventory.others).map(v => user[v] && `*${global.rpg.emoticon(v)}${v}:* ${user[v]}`).filter(v => v).join('\n')}${tools ? `
 
