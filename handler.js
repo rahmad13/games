@@ -180,7 +180,7 @@ export async function handler(chatUpdate) {
                     user.pc = 0
                  if (!isNumber(user.job))
                     user.job = 0
-                if (!isNumber(user.pasangan))
+                if (!('pasangan' in user))
                     user.pasangan = ''
             } else
                 global.db.data.users[m.sender] = {
