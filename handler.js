@@ -319,7 +319,7 @@ export async function handler(chatUpdate) {
                 self: false,
                 autoread: false,
                 jadibot: true,
-                restrict: false
+                restrict: true
             }
         } catch (e) {
             console.error(e)
