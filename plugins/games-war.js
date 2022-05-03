@@ -63,10 +63,10 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
         return m.reply(`*Permainan sudah dimulai, tidak bisa join.*`)
       }
       // IF YOU ALREADY JOIN THE GAME
-      for (i = 0 ; i < conn.war[m.chat].length ; i++) {
+      for (let i = 0 ; i < conn.war[m.chat].length ; i++) {
         if (m.sender == conn.war[m.chat][i].user){
           total = 0
-          for (i = 0 ; i < 10 ; i++) {
+          for (let i = 0 ; i < 10 ; i++) {
             if (conn.war[m.chat][i].user == ""){
               total += 1
             }
@@ -81,12 +81,12 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
           if (conn.war2[m.chat].money == 0) return conn.reply(m.chat,`*Tolong @${conn.war[m.chat][0].user.split('@')[0]} tetapkan modal awal perang (minimal Rp. 1.000.000)*\n\n.war money 1.000.000`,m, {contextInfo : {mentionedJid : [conn.war[m.chat][0].user]}})
           return m.reply('a')
           if (global.db.data.users[m.sender].money < conn.war2[m.chat].money) return m.reply(`*Uang kamu minimal Rp. ${conn.war2[m.chat].money.toLocaleString()} untuk bermain game ini.*`)
-          for (i = 1 ; i < 5 ; i++) {
+          for (let i = 1 ; i < 5 ; i++) {
             if (conn.war[m.chat][i].user == ""){
               var xp = global.db.data.users[m.sender].exp
               conn.war[m.chat][i] = {"user" : m.sender, "hp" : 5000, "lvl" : global.db.data.users[m.sender].level, "turn" : false}
               total = 0
-              for (i = 0 ; i < 10 ; i++) {
+              for (let i = 0 ; i < 10 ; i++) {
                 if (conn.war[m.chat][i].user == ""){
                   total += 1
                 }
@@ -97,12 +97,12 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
         }else if (args[1].toLowerCase() == "b"){
           if (conn.war2[m.chat].money == 0) return conn.reply(m.chat,`*Tolong @${conn.war[m.chat][0].user.split('@')[0]} tetapkan modal awal perang (minimal Rp. 1.000.000)*\n\n.war money 1.000.000`,m, {contextInfo : {mentionedJid : [conn.war[m.chat][0].user]}})
           if (global.db.data.users[m.sender].money < conn.war2[m.chat].money) return m.reply(`*Uang kamu minimal Rp. ${conn.war2[m.chat].money.toLocaleString()} untuk bermain game ini.*`)
-          for (i = 5 ; i < 10 ; i++) {
+          for (let i = 5 ; i < 10 ; i++) {
             if (conn.war[m.chat][i].user == ""){
               var xp = global.db.data.users[m.sender].exp
               conn.war[m.chat][i] = {"user" : m.sender, "hp" : 5000, "lvl" : global.db.data.users[m.sender].level, "turn" : false}
               total = 0
-              for (i = 0 ; i < 10 ; i++) {
+              for (let i = 0 ; i < 10 ; i++) {
                 if (conn.war[m.chat][i].user == ""){
                   total += 1
                 }
@@ -120,7 +120,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
       
 
       // CHECK IF ROOM FULL
-      for (i = 0 ; i < conn.war[m.chat].length ; i++) {
+      for (let i = 0 ; i < conn.war[m.chat].length ; i++) {
         total = 0
         if (conn.war[m.chat][i].user != ""){
           total += 1
@@ -136,7 +136,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
     if (conn.war2[m.chat].war) {
       m.reply(`*Perang sudah dimulai, anda tidak bisa keluar*`)
     }else {   // IF NOT
-      for (i = 0 ; i < 10 ; i++) {
+      for (let i = 0 ; i < 10 ; i++) {
         if (m.sender == conn.war[m.chat][i].user){
           return m.reply(`*Berhasil keluar dari game*\n\n*Butuh ${total} user lagi*`)
         }
@@ -151,7 +151,7 @@ let handler = async (m, { conn, usedPrefix, args, command }) => {
     var teamA = []
     var teamB = []
     var teamAB = []
-    for (i = 0 ; i < conn.war[m.chat].length ; i++){
+    for (let i = 0 ; i < conn.war[m.chat].length ; i++){
       if (i < 5){
         if (conn.war[m.chat][i].user != "") teamA.push(conn.war[m.chat][i].user)
       }else {
