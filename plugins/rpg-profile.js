@@ -36,7 +36,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 *🧬XP:* TOTAL ${exp} (${exp - min} / ${xp}) [${math <= 0 ? `Siap untuk *${usedPrefix}levelup*` : `${math} XP lagi untuk levelup`}]
 *📨Terdaftar:* ${registered ? 'Ya (' + new Date(regTime).toLocaleString() + ')' : 'Tidak'} ${lastclaim > 0 ? '\n*⏱️Terakhir Klaim:* ' + new Date(lastclaim).toLocaleString() : ''}`
 
-conn.sendFile(m.chat, pp, 'propil.jpg', dbr, m , { contextInfo: { mentionedJid: [who] })
+conn.sendFile(m.chat, pp, 'propil.jpg', dbr, m , { contextInfo: { mentionedJid: [who] }})
 
 }
 
