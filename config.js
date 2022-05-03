@@ -54,7 +54,7 @@ global.pulsa = [
 ["6282328303332"], 
 ["6281375308383"]
 ]
-global.trakteer = ""//Link url https://
+global.trakteer = "https://trakteer.id/rizxyugnxng/tip"//Link url https://
 global.paypal = "rizkynursanto48@gmail.com"//paypal email
 global.gopay = ""//Numver for Payment digital Gopay Gojek
 
