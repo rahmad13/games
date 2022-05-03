@@ -46,6 +46,19 @@ global.render = 'wait render'
 global.webs = 'https://rizxyu.github.io/sxzyweb/'
 global.logo = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKsHEAITWM7dPQ_irYtNvZ1hiM_zj4tZ4f6A&usqp=CAU"
 global.gcwangsaf = "https://chat.whatsapp.com/KamZimB6d8R3c2C4PepN6Q"
+
+//Donasi
+global.saweria = "https://www.saweria.co/sxzy"
+global.dana = ["6282328303332"]
+global.pulsa = [
+["6282328303332"], 
+["6281375308383"]
+]
+global.trakteer = ""//Link url https://
+global.paypal = "rizkynursanto48@gmail.com"//paypal email
+global.gopay = ""//Numver for Payment digital Gopay Gojek
+
+
 //Rpg
 global.rpg = {
   emoticon(string) {
