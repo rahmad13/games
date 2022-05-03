@@ -28,15 +28,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       }
      }
      let math = max - xp
-    let dbr = `*YOUR PROFILE*
-*🏷️ Nama:* *(${name})* ${registered ? '(' + name + ') ' : ''} (@${who.replace(/@.+/, '')})
+conn.sendFile(m.chat, pp, 'propil.jpg', `*YOUR PROFILE*
+*🏷️ Nama:* *(${name})* ${registered ? '(' + name + ') ' : ''} (@${who.split("@")[0]})
 *💲Money:* *RP* ${money}
 *🏆Level* ${level}
 *🎋Role:* ${role}
 *🧬XP:* TOTAL ${exp} (${exp - min} / ${xp}) [${math <= 0 ? `Siap untuk *${usedPrefix}levelup*` : `${math} XP lagi untuk levelup`}]
-*📨Terdaftar:* ${registered ? 'Ya (' + new Date(regTime).toLocaleString() + ')' : 'Tidak'} ${lastclaim > 0 ? '\n*⏱️Terakhir Klaim:* ' + new Date(lastclaim).toLocaleString() : ''}`
-
-conn.sendFile(m.chat, pp, 'propil.jpg', dbr, m , { contextInfo: { mentionedJid: [who] }})
+*📨Terdaftar:* ${registered ? 'Ya (' + new Date(regTime).toLocaleString() + ')' : 'Tidak'} ${lastclaim > 0 ? '\n*⏱️Terakhir Klaim:* ' + new Date(lastclaim).toLocaleString() : ''}`, m , { contextInfo: { mentionedJid: [who] }})
 
 }
 
