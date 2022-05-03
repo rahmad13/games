@@ -11,8 +11,8 @@ let handler = async (m, { conn, participants }) => {
     m.reply(`Succes kick ${kickedUser.map(v => '@' + v.split('@')[0])}`, null, { mentions: kickedUser })
 
 }
-handler.help = ['kick', '-'].map(v => 'o' + v + ' @user')
-handler.tags = ['owner']
+handler.help = ['kick', '-'].map(v => v + ' @user')
+handler.tags = ['group']
 handler.command = /^(okick|o-)$/i
 handler.admin = true
 handler.group = true
