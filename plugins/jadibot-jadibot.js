@@ -1,22 +1,15 @@
 import qrcode from 'qrcode'
 import store from '../lib/store.js'
-import { makeWASocket, protoType, serialize } from './lib/simple.js';
-//
 
 if (global.conns instanceof Array) console.log()// for (let i of global.conns) global.conns[i] && global.conns[i].user ? global.conns[i].close().then(() => delete global.conns[id] && global.conns.splice(i, 1)).catch(global.conn.logger.error) : delete global.conns[i] && global.conns.splice(i, 1)
 else global.conns = []
-//
 
 let handler  = async (m, { conn, args, usedPrefix, command }) => {
-
   let parent = args[0] && args[0] == 'plz' ? conn : global.conn
   let auth = false
   if ((args[0] && args[0] == 'plz') || global.conn.user.jid == conn.user.jid) {
     let id = global.conns.length
-
     let conn = new global.conn.constructor()
-    conn.version = global.conn.version
-    
     if (args[0] && args[0].length > 200) {
       let json = Buffer.from(args[0], 'base64').toString('utf-8')
       // global.conn.reply(m.isGroup ? m.sender : m.chat, json, m)
@@ -24,7 +17,6 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
       await store.useSingleFileAuthState(obj)
       auth = true
     }
-//EZ DEK
     conn.on('qr', async qr => {
       let scan = await parent.sendFile(m.chat, await qrcode.toDataURL(qr, { scale: 8 }), 'qrcode.png', 'Scan QR ini untuk jadi bot\n\n1. Klik titik tiga di pojok kanan atas\n2. Ketuk Perangkat Tertaut\nTekan Tombol Tautkan Perangkat\n4. Scan QR ini \nQR Expired dalam 20 detik\n\n MADE BY'+ author, m)
       setTimeout(() => {
@@ -43,9 +35,6 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
     conn.ev.on('groups.update', conn.groupsUpdate)
     conn.ev.on('group-participants.update', conn.participantsUpdate)
     conn.ev.on('message.delete', conn.onDelete)
-    conn.ev.on('connection.update', conn.connectionUpdate)
-    conn.ev.on('creds.update', conn.credsUpdate)
-  
   
     conn.connect().then(async ({user}) => {
       parent.reply(m.chat, 'Berhasil tersambung dengan WhatsApp - mu.\n*NOTE: Ini cuma numpang*\n' + JSON.stringify(user, null, 2), m)
