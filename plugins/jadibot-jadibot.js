@@ -17,7 +17,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
       await store.useSingleFileAuthState(obj)
       auth = true
     }
-    conn.ev('qr', async qr => {
+    conn.ws('qr', async qr => {
       let scan = await parent.sendFile(m.chat, await qrcode.toDataURL(qr, { scale: 8 }), 'qrcode.png', 'Scan QR ini untuk jadi bot\n\n1. Klik titik tiga di pojok kanan atas\n2. Ketuk Perangkat Tertaut\nTekan Tombol Tautkan Perangkat\n4. Scan QR ini \nQR Expired dalam 20 detik\n\n MADE BY'+ author, m)
       setTimeout(() => {
         parent.deleteMessage(m.chat, scan.key)
@@ -50,7 +50,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
       delete global.conns[i]
       global.conns.splice(i, 1)
     }, 60000)
-    conn.ev('close', () => {
+    conn.ws('close', () => {
       setTimeout(async () => {
         try {
           if (conn.state != 'close') return
