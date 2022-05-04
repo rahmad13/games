@@ -31,13 +31,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
      let math = max - xp
 let caption = `*YOUR PROFILE*
 *🏷️ Nama:* *(${name})* ${registered ? '(' + name + ') ' : ''} ( @${who.split("@")[0]} )
-*❤️ Pasangan:*  ${pasangan ? `${pasangan.split("@")[0]}` : `Tidak Punya`}
+*❤️ Pasangan:*  ${pasangan ? `@${pasangan.split("@")[0]}` : `Tidak Punya`}
 *💲Money:* *RP* ${money}
 *🏆Level* ${level}
 *🎋Role:* ${role}
 *🧬XP:* TOTAL ${exp} (${exp - min} / ${xp}) [${math <= 0 ? `Siap untuk *${usedPrefix}levelup*` : `${math} XP lagi untuk levelup`}]
 *📨Terdaftar:* ${registered ? 'Ya (' + new Date(regTime).toLocaleString() + ')' : 'Tidak'} ${lastclaim > 0 ? '\n*⏱️Terakhir Klaim:* ' + new Date(lastclaim).toLocaleString() : ''}\n\n Ketik ${usedPrefix}inv untuk melihat Inventory RPG`
-conn.sendFile(m.chat, pp, 'propil.jpg', caption, m , { mentions: conn.parseMention(caption) })
+conn.sendFile(m.chat, pp, 'propil.jpg', caption, m , { mentions: [who, pasangan] })
 
 }
 
