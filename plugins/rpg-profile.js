@@ -37,7 +37,7 @@ let caption = `*YOUR PROFILE*
 *🎋 Role:* ${role}
 *🧬 XP:* TOTAL ${exp} (${exp - min} / ${xp}) [${math <= 0 ? `Siap untuk *${usedPrefix}levelup*` : `${math} XP lagi untuk levelup`}]
 *📨 Terdaftar:* ${registered ? 'Ya (' + new Date(regTime).toLocaleString() + ')' : 'Tidak'} ${lastclaim > 0 ? '\n*⏱️Terakhir Klaim:* ' + new Date(lastclaim).toLocaleString() : ''}\n\n Ketik ${usedPrefix}inv untuk melihat Inventory RPG`
-conn.sendFile(m.chat, pp, 'propil.jpg', caption, m , false, { contextInfo: { mentionedJid } })
+conn.sendFile(m.chat, pp, 'propil.jpg', caption, m , false, { contextInfo: { mentionedJid: [who, pasangan] } })
 
 }
 
