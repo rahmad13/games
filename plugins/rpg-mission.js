@@ -36,12 +36,19 @@
       "misii": "Menyelesaikan Dungeon Berisi Monster Laba laba",
       "exp": 4837,
       "crystal": 7
+    },
+   {
+      "index": 6,
+      "rank": "A+",
+      "misii": "Membuat Ramuan Penyembuh penyakit 50 poison",
+       "exp": 26829,
+      "crystal": 15
     }
   ]
 
   //var =???
   //Class
-  async function handler(m, { conn, args, usedPrefix, command }) => {
+  async function handler(m, { conn, args, usedPrefix, command }) {
   if (m.sender in confirm) throw 'Kamu masih melakukan misi, tunggu sampai selesai!!'
 
      try {
