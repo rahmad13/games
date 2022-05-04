@@ -23,6 +23,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
         parent.deleteMessage(m.chat, scan.key)
       }, 30000)
     })
+//
     conn.welcome = global.conn.welcome + ''
     conn.bye = global.conn.bye + ''
     conn.spromote = global.conn.spromote + ''
