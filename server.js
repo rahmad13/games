@@ -21,9 +21,9 @@ function connect(conn, PORT) {
         res.end(await toBuffer(_qr))
     })
 
-    conn.on('qr', qr => {
+   /** conn.ev.on('qr', qr => {
         _qr = qr
-    })
+    })**/
 
     // let io = new Socket(server)
     // io.on('connection', socket => {
