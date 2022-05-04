@@ -49,7 +49,7 @@
   //var =???
   //Class
   async function handler(m, { conn, args, usedPrefix, command }) {
-  if (m.sender in confirm) throw 'Kamu masih melakukan misi, tunggu sampai selesai!!'
+  if (m.sender in confirm) return m.reply('Kamu masih melakukan misi, tunggu sampai selesai!!')
 
      try {
   let json = misi[Math.floor(Math.random() * misi.length)]//get misi
