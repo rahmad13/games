@@ -94,7 +94,7 @@ handler.before = async m => {
   let json = misi[Math.floor(Math.random() * misi.length)]//get misi
   const cooldown = 300000 //coldown timer second
   let user = global.db.data.users[m.sender] //Get db user
-  let { timeout, count } = confirm[m.sender]
+  let { timeout } = confirm[m.sender]
    
   let txt = (m.msg && m.msg.selectedDisplayText ? m.msg.selectedDisplayText : m.text ? m.text : '').toLowerCase()
  
