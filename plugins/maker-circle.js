@@ -1,7 +1,6 @@
-import { Canvas } = require("canvacord")
+import Canvas = require("canvacord")
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-
 
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let pp = await conn.profilePictureUrl(who).catch(_ => './src/avatar_contact.png')
