@@ -94,7 +94,10 @@ handler.before = async m => {
   let json = misi[Math.floor(Math.random() * misi.length)]//get misi
   const cooldown = 300000 //coldown timer second
   let user = global.db.data.users[m.sender] //Get db user
-
+  let { timeout, count } = confirm[m.sender]
+   
+  let txt = (m.msg && m.msg.selectedDisplayText ? m.msg.selectedDisplayText : m.text ? m.text : '').toLowerCase()
+ 
   if(typeof user.lastmisi != "number") global.db.data.users[m.sender].lastmisi = 0
   if(typeof user.exp != "number") global.db.data.users[m.sender].exp = 0
   if(typeof user.crystal != "number") global.db.data.users[m.sender].crystal = 0
@@ -109,9 +112,7 @@ handler.before = async m => {
   let Kamu = (randomkamu * 1)
   let aud = ["Mana Habis", "Stamina Habis", "Diserang Monster", "Dibokong Monster"]
   let aui = aud[Math.floor(Math.random() * aud.length)]
-
-  let txt = (m.msg && m.msg.selectedDisplayText ? m.msg.selectedDisplayText : m.text ? m.text : '').toLowerCase()
-   
+    
   //Gacha systemBeta
 try {
         if (/^solo)?$/i.test(txt)) {
@@ -161,7 +162,15 @@ handler.command = /^(m(isi)?(ission)?)$/i
 
 export default handler
 
-
+/**
+ * Detect if thats number
+ * @param {Number} x 
+ * @returns Boolean
+ */
+function number(x = 0) {
+    x = parseInt(x)
+    return !isNaN(x) && typeof x == 'number'
+}
 
 function pickRandom(list) {
   return list[Math.floor(Math.random() * list.length)]
