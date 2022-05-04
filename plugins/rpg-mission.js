@@ -1,7 +1,7 @@
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 // Misi Functiion/class
-var misi = [
+var misi = {
 {
 "index": 1
 "rank": "S++",
@@ -37,8 +37,7 @@ var misi = [
 "exp": "4837",
 "crystal": "7"
 }
-
-]
+}
 
 //var =???
 //Class
