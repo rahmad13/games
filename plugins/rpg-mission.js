@@ -77,7 +77,7 @@ if (Aku > Kamu) {
 m.reply(cpt)
 user.exp += json.exp
 user.crystal += json.crystal
-   } else if (Kamu > Aku) {
+   } else if (Kamu < Aku) {
   var flr = `Gagal Menyelesaikan Misi ${json.misii} Dikarenakan ${aui} `
  m.reply(flr)
    } else {
