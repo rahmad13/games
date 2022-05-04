@@ -1,5 +1,6 @@
 import qrcode = require('qrcode')
-
+import { getAuthenticationCredsType } from "@adiwajshing/baileys
+"
 if (global.conns instanceof Array) console.log()// for (let i of global.conns) global.conns[i] && global.conns[i].user ? global.conns[i].close().then(() => delete global.conns[id] && global.conns.splice(i, 1)).catch(global.conn.logger.error) : delete global.conns[i] && global.conns.splice(i, 1)
 else global.conns = []
 
@@ -13,7 +14,7 @@ let handler  = async (m, { conn, args, usedPrefix, command }) => {
       let json = Buffer.from(args[0], 'base64').toString('utf-8')
       // global.conn.reply(m.isGroup ? m.sender : m.chat, json, m)
       let obj = JSON.parse(json)
-      await conn.loadAuthInfo(obj)
+      await getAuthenticationCredsType(obj)
       auth = true
     }
     conn.on('qr', async qr => {
