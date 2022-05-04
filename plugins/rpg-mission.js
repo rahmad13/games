@@ -98,7 +98,6 @@ handler.before = async m => {
     if (!(m.sender in confirm)) return
     if (m.isBaileys) return
 
-  let json = misi[Math.floor(Math.random() * misi.length)]//get misi
   const cooldown = 300000 //coldown timer second
   let user = global.db.data.users[m.sender] //Get db user
   let { timeout } = confirm[m.sender]
@@ -112,7 +111,10 @@ handler.before = async m => {
   let timers = (cooldown - (new Date - user.lastmisi))
   if(new Date - user.lastmisi <= cooldown) return m.reply(`Wait for *🕐${clockString(timers)}*`)
   if(!user.skill) return m.reply("Anda belum mempunyai skill")
-
+  //Gacha systemBeta
+try {
+        if (/^solo)?$/i.test(txt)) {
+  let json = misi[Math.floor(Math.random() * misi.length)]//get misi
   let randomaku = `${Math.floor(Math.random() * 101)}`.trim()
   let randomkamu = `${Math.floor(Math.random() * 81)}`.trim() //hehe Biar Susah Menang :v
   let Aku = (randomaku * 1)
@@ -120,9 +122,6 @@ handler.before = async m => {
   let aud = ["Mana Habis", "Stamina Habis", "Diserang Monster", "Dibokong Monster"]
   let aui = aud[Math.floor(Math.random() * aud.length)]
     
-  //Gacha systemBeta
-try {
-        if (/^solo)?$/i.test(txt)) {
     if(Aku > Kamu) {
     var cpt = `Berhasil Menyelesaikan misi ${json.misii}`
     m.reply(cpt)
