@@ -5,12 +5,7 @@ import fs from 'fs'
 
 /**Owner number**/
 global.owner = [
-  ['62887436568613'],
-  ['6281313312123'],
-  ['6282328303332'],
-  ['6288287024581'],
-  ['6285895171063'],
-  ['6287724225921', '️SxzY', true]
+  ['6283197563509', '️SxzY', true]
   // [number, dia creator/owner?, dia developer?]
 ] // Put your number here
 global.mods = [] // Want some help?
@@ -35,8 +30,8 @@ global.APIKeys = { // APIKey Here
 }
 
 // Sticker WM
-global.packname = 'Use bot 6288287024581 FOR FREE'
-global.author = 'SXZYBOT'
+global.packname = 'Use bot 6285336060095 FOR FREE'
+global.author = 'DreamBOT'
 
 global.multiplier = 69 // The higher, The harder levelup
 
@@ -48,13 +43,12 @@ global.logo = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKsHEAITWM7
 global.gcwangsaf = "https://chat.whatsapp.com/KamZimB6d8R3c2C4PepN6Q"
 
 //Donasi
-global.saweria = "https://www.saweria.co/sxzy"
-global.dana = ["6282328303332"]
+global.saweria = "https://www.saweria.co/dreambot"
+global.dana = ["6283197563509"]
 global.pulsa = [
-["6282328303332"], 
-["6281375308383"]
+["6285336060095"]
 ]
-global.trakteer = "https://trakteer.id/rizxyugnxng/tip"//Link url https://
+global.trakteer = "https://trakteer.id/dreambot/tip"//Link url https://
 global.paypal = "rizkynursanto48@gmail.com"//paypal email
 global.gopay = ""//Numver for Payment digital Gopay Gojek
 
