@@ -5,7 +5,7 @@ conn.sendHydrated(m.chat, ` ${conn.getName(m.sender)} Want Support Bot?
 _*Pulsa/pulse(Telkomsel):*_ ${pulsa}
 
 _*Dana/ovo:*_ ${dana}
-_*Paypal:*_ ${paypal}
+_*Shopeepay/Gopay:*_ ${dana}
 _*Saweria:*_ ${saweria}
 _*Trakteer:*_ ${trakteer}
 Setelah melakukan donasi kirim bukti pembayaran ke owner
